@@ -1,0 +1,45 @@
+crontab -l:
+   列出当前用户的crontab列表
+crontab -e:
+   以vi打开crontab文件，可以进行编辑。如果需要加新的自启动项目，可以在此进行添加后再输入:wq
+
+保存。
+
+   "crontab.XXXXGoo5MX" 25L, 1611C written                                               
+   crontab: installing new crontab
+   表示新的crontab已经load进去了。
+
+虽然crontab看起来比较简单，但是第一次使用时还是遇到了不大不小的麻烦。
+
+问题一、
+    按照网上介绍的方法，自己编辑了一个文件
+    vi my.crontab
+    然后在命令行中输入：crontab cronfile
+    
+    杯具了，当前用户原先设置的时程表被我给覆盖了，汗！幸好系统有crontab的备份，不然死惨了。
+
+解决方法：
+    恢复备份。
+    用crontab -e打开进入编辑状态即可写入自己要的自启动项目
+
+问题二、
+    crontab -e
+    加入测试用的自启动项目
+    12 11 * * * echo "test"
+    到了指定的时间11:22，未见打印出test
+    猜想也许是进程已经执行了，但是未能写到标准输出而已
+   
+
+问题三、将上面的测试项目改为
+    15 11 * * * echo "test" < /home/user_01/study/test.txt
+    
+    还是不能正确执行！
+
+    请教了可爱的vincent同学才知道，new crontab installed之后三分钟之内是不能执行的。尝试将时
+
+间延迟一点。
+
+    30 11 * * * echo "test" < /home/user_01/study/test.txt
+    这回终于搞定了
+
+    另外，待执行的命令或者shell脚本必须给出绝对路径，否则也是不能成功执行的

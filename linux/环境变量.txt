@@ -1,0 +1,19 @@
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
+
+系统变量下：
+新建：
+classpath
+.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar
+新建：
+JAVA_HOME
+E:\Program Files (x86)\Java\jdk1.7.0_45
+添加：
+Path
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+注意：环境变量修改好之后，一定要重新打开cmd  输java
+
+
+本机环境变量：
+源 1.6   E:\Workspaces\Oracle\Middleware\jdk160_29
+

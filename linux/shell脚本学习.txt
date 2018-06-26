@@ -1,0 +1,29 @@
+mkdir test           创建一个文件夹
+touch helloworld.sh  创建一个文件
+pwd                  即可显示当前工作路径
+passwd user1         修改其他用户的密码
+------------------------------------------------
+#!/bin/bash
+
+# 注意："="号两边不能有空格，因为个人习惯问题，我就总喜欢在等号两边加上空格
+export BDATE=$(date +%Y%m%d%H:%M:%S)
+demo="hello world"
+touch /usr/local/test/$BDATE.txt
+# 在终端输出变量demo，也就是hello world
+echo $demo $BDATE
+
+
+-------------------------------------------------------定时
+crontab -e
+05 14 * * * /usr/local/test/helloworld.sh
+#这样就添加了一个计划，在每天的13点42分运行/home/oracle/backup/backup.sh。
+
+date    #系统日期
+service crond restart #重启crond
+
+
+
+还是用crontab -e，在里面进行设置：
+*/1 * * * * root /opt/pro_some.sh
+一分钟来次，看看有没有？
+ 

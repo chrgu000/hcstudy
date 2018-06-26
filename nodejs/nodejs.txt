@@ -1,0 +1,58 @@
+node-v10.1.0-x64.msi
+node-v8.11.1-x64.msi
+
+NodeJs各个目录的含义，如下：
+
+——node_modules 文件夹下是各种模块，这里是express框架和jade模版引擎。
+——public 文件夹下是各种静态文件。
+——routes 文件夹下是各种action。好吧routes是路径的意思，但是我喜欢称作这个叫action。
+——views 文件夹下面是各种模版。
+
+Jade 模板引擎使用 http://cnodejs.org/topic/5368adc5cf738dd6090060f2
+
+express 学习记录
+vscode express helloworld   npm install  npm start
+koa2 学习记录 koa2 项目名称
+
+koa2无法在低版本的nodejs下使用，否则报错“(node.js)nodejs koa ctx=>”  暂时把nodejs更新到8继续学习
+
+babel-register模块会改写require命令，为它加上一个钩子。此后每当使用require加载.js、.jsx、.es、.es6后缀名文件的时候，都会先用babel进行转码
+require("babel-register"); // 使用babel-register
+需要注意的是，babel-register只会对require命令加载的文件转码，而不会对当前文件转码。另外，由于它是实时转码，所以只适合在开发环境使用。
+babel的介绍：
+https://www.cnblogs.com/lsgxeva/p/7758184.html  
+ ECMAScript 6 简介 中详细讲解了
+
+macha
+npm install --global mocha
+
+暴露出去
+module.export=
+package.json中的dependencies字段：依赖模块  npm install 就可以安装全
+ctx.render  返回一个html页面
+ctx.response.body 返回输出的文本
+ctx.rest(p);   用JSON序列化返回给客户
+
+--------------------------------------------------------------------------ES6  个人小结
+// 转码前
+input.map(item => item + 1);
+
+// 转码后
+input.map(function (item) {
+  return item + 1;
+});
+let 命令所在的代码块内有效
+const声明一个只读的常量。一旦声明，常量的值就不能改变。
+global 顶层对象
+严格相等运算符（===）
+扩展运算符 三个点（...）  
+let arr = ['a', 'b', 'c'];let iter = arr[Symbol.iterator]();
+iter.next() // { value: 'a', done: false }  ....
+
+-------------------------------------------------------------------------------express
+router
+next函数主要负责将控制权交给下一个中间件
+如果path参数为空，则默认为"/"，而path为"/"的中间件默认匹配所有的请求
+
+表单数据一种是get方式， 另一种是post 方式   http://cnodejs.org/topic/4f5c62932373009b5c0b027b
+https://www.zhihu.com/question/36654014

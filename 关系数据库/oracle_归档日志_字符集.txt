@@ -1,0 +1,59 @@
+使用oracle用户登录服务器，进入RMAN维护：
+
+rman target sys/pass
+
+检查一些无用的archivelog
+
+RMAN> crosscheck archivelog all;
+
+删除截止到前一天的所有archivelog
+
+RMAN> delete archivelog until time 'sysdate-1' ;
+
+
+-------------------------------------------------------------------------------------------------
+su - oracle
+
+sqlplus /nolog
+
+connect /as sysdba
+
+select * from V$FLASH_RECOVERY_AREA_USAGE;
+
+
+
+
+
+-------------------------------------------------------------------关闭归档模式
+SQL> --关闭归档模式
+SQL> alter system set log_archive_start=false scope=spfile; #禁用自动归档
+SQL> shutdown immediate;
+SQL> startup mount; #数据库启动到mount，打开控制文件
+SQL> alter database noarchivelog; #将数据库改为非归档模式
+SQL> alter database open; #打开数据文件
+SQL> archive log list; #查看当前归档模式
+
+-------------------------------------------------------------------------------
+select userenv('language') from dual;
+AMERICAN_AMERICA.ZHS16GBK
+
+alter database character set ZHS16GBK
+ALTER DATABASE character set INTERNAL_USE ZHS16GBK
+
+修改数据库字符集过程：
+
+shutdown immediate
+
+startup restrict
+
+alter database character set AL32UTF8;
+
+
+ORA-12712: new character set must be a superset of old character set
+RROR at line 1:
+结果报错，提示新字符集必须是老字符集的超集。
+于是强制转换
+ALTER DATABASE character set INTERNAL_USE AL32UTF8;
+alter system disable restricted session;
+字符集修改到这完成
+记一次oracle imp导入时遇到字符集告警后修改字符集的过程记一次oracle imp导入时遇到字符集告警后修改字符集的过程

@@ -1,0 +1,7 @@
+
+show dbs
+use db
+show collections 
+
+导入备份文件：
+mongorestore  --gzip --archive=F:\hc\learn-javascript-master\DoraCMS\data\DoraDbData.20171117.gz

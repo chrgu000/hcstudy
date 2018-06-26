@@ -1,0 +1,10 @@
+weblogic
+web123456
+
+H:\weblogic\user_projects\domains\base_domain\bin\startWebLogic.cmd
+
+域位置 
+H:/weblogic/user_projects/domains/base_domain
+
+管理服务器 URL 
+http://LZD-20160808LIW:7001/console
