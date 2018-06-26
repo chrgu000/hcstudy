@@ -1,0 +1,8 @@
+一、和 myEclipse一样new一个web项目:
+new JavaEnterprise  选择Web Application 即可
+二、修改web为WebRoot
+1、project下 web->refactor->rename  为WebRoot
+2、Modules name->WebRoot
+  Web Resource Directory里也修改成WebRoot
+三、把项目部署后的文件放到本地tomcat的webapps下
+ 参考https://blog.csdn.net/Fight_Rain/article/details/78935503
