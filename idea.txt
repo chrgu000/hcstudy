@@ -6,3 +6,4 @@ new JavaEnterprise  选择Web Application 即可
   Web Resource Directory里也修改成WebRoot
 三、把项目部署后的文件放到本地tomcat的webapps下
  参考https://blog.csdn.net/Fight_Rain/article/details/78935503
+http://idea.iteblog.com/key.php
