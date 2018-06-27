@@ -1,0 +1,131 @@
+sa 123456  oracle scott  mysql root
+=(MID(G7,3,2)-MID(F7,3,2))*12+RIGHT(G7,2)-RIGHT(F7,2)
+analists 分析家 化验员 aliases 别名
+spotlight 聚光灯 != <> 不等于
+所有子查询中的 select 后面写什么都行
+学习过程： plsql    oracle体系   数据库调优
+⑴/*和*/之间的多行注释； 　　⑵以--开始的单行注释
+叫做过程化SQL语言（Procedural Language/SQL）。
+xfsiji 192 168 100 100 1521
+192 168 1 46 192 168 1 254  202 103 44 150
+tnsnames.ora 文件
+C:\Documents and Settings\Administrator\Application Data\Microsoft\Templates
+C:\Documents and Settings\Administrator\Application Data\Quest Software\Toad for Oracle\10.5\User Files   CONNECTIONS.INI
+D:\oracle\product\10.2.0\db_1\network\ADMIN
+select instance_name from v$instance 查询sid   ORCL
+TO_CHAR(ROLE_DREPLYDATE, 'yyyy-mm-dd hh24:mi:ss')
+to_date(#role_dreplydate#,'yyyy-mm-dd hh24:mi:ss')
+'yyyy-mm-dd hh24:mi:ss'
+show user  当前用户
+lower()转小  
+concat连接符 相当与||
+length() 返回字符串长度
+nvl() 转换空值
+between...and是指闭区间   >=  =<
+intersect 取同
+union 和
+minus 去同留异
+number(7,2)9999,99
+distinct 只能跟着select后   不同的
+lower()函数   小写 
+upper()   大写
+trunc(数字，小数点后的位数)用于截取  
+substr()  用于截取字符串
+select jop case jop  when 'analyst' then 结果
+end    -- end 是结束标志
+decode(判断条件，匹配1，值1，匹配2，值2) 判断条件=匹配值
+order by  排序  默认小到大   查询语句后
+group by 列名     表示按指定列分组查询  having  对分组过滤
+lpad左补丁 rpad右补丁 trim 去掉空格 inticap首字母大写
+mod(salary,100)取模
+to_number() 转数字
+all() 所有   >all() 大于所有
+any() 任意
+in()
+InStr([start, ]string1, string2[, compare]) 
+InStr(FILEURL,'\',1,2) 从1开始，第2次匹配
+start：设置开始查找的位置，可以省略，省略时默认从第一个字符开始查找，
+string1是源字符
+string2可以说是关键字
+like _      '%\_%' escape '\'
+IS_DATE
+select regexp_replace('23456中国3-00=.,45','[^0-9]') from dual;   
+select translate('a1b2c3E','$0123456789','$') from dual -- repalce 升级版 0123456 中的每个字符替换为to_str中的相应字符以后的string
+
+select name,dept,salary,sum(salary) over (partition by dept) total_salary from salary;
+ order by根据指定的列对结果集进行排序 后面可加desc asc 进行升或降序
+ group by根据一个或多个列对结果集进行分组，用于组合合计函数
+ partition by 作用仅用于分组，分组查询计算统计使用的 
+--去重复
+select id, name, memofrom Awhere id in (select id from A group by id having count(1) >= 2)
+
+SELECT *FROM A WHERE 1=1 AND EXISTS (SELECT 1 FROM B WHERE A.C = B.C)
+
+Oracle列操作
+
+增加一列： alter table emp4 add test varchar2(10);
+
+修改一列：  alter table emp4 modify test varchar2(20);
+
+删除一列：alter table emp4 drop column test;
+
+　　这里要注意几个地方，首先，增加和修改列是不需要加关键字COLUMN，否则会报错ora-00905。
+
+　　其次，对删除单列的话，一定要加COLUMN，然后记住，删除是不需要加列类型的。
+
+做法如下；
+
+增加多列：alter table emp4 add (test varchar2(10),test2 number);
+
+修改多列：alter table emp4 modify (test varchar2(20),test2 varchar2(20));
+
+删除多列：alter table emp4 drop (test,test2);
+
+很奇怪的现象，再单列中要加关键字COLUMN，然而再删除多列的时候，不能加COLUMN关键字。
+
+拼音 SELECT * FROM TEAM ORDER BY NLSSORT(队名,'NLS_SORT = SCHINESE_PINYIN_M') 
+笔划 SELECT * FROM TEAM ORDER BY NLSSORT(队名,'NLS_SORT = SCHINESE_STROKE_M') 
+部首 SELECT * FROM TEAM ORDER BY NLSSORT(队名,'NLS_SORT = SCHINESE_RADICAL_M')
+
+CREATE SEQUENCE emp_sequence       
+INCREMENT BY 1   -- 每次加几个       
+START WITH 1     -- 从1开始计数       
+NOMAXVALUE       -- 不设置最大值       
+NOCYCLE          -- 一直累加，不循环       
+CACHE 10;  一旦定义了emp_sequence，你就可以用CURRVAL，NEXTVAL  
+
+1. 复制表结构及其数据： 
+create table table_name_new as select * from table_name_old 
+
+2. 只复制表结构： 
+create table table_name_new as select * from table_name_old where 1=2; 
+
+或者： 
+create table table_name_new like table_name_old 
+
+3. 只复制表数据：
+如果两个表结构一样：
+insert into table_name_new select * from table_name_old 
+
+如果两个表结构不一样：
+insert into table_name_new(column1,column2...) select column1,column2... from table_name_old
+pasting
+
+    SELECT * FROM (SELECT A.*, ROWNUM RN FROM (SELECT aac001 ,aae003,      --费款所属期
+       aac150,      --缴费基数
+       aaa010,      --社平工资
+       aic412,      --个人缴纳金额
+       aic413,      --单位划拨金额
+       bic003,       --个人缴统筹金额
+       AAE045,       --记帐年月
+       decode(aae120,'1','未注销','已注销') as aae120        --注销标志
+  FROM V_QYYLZH_422826 where aac001 = '82600058393' order by aae003 desc) A WHERE ROWNUM <= 16)WHERE RN >=9
+
+--  使用 select * from  WAREHOUSE@STDAXT
+CREATE DATABASE LINK STDAXT
+CONNECT TO STDAXT
+IDENTIFIED BY <PWD>
+USING '106.15.60.213:1521/orcl';
+
+ sELECT sid, serial#, username, oSUSEr,
+'alter system kill session '''||sid||','||serial#||''''||';' FROM v$session where sid in (select session_id from v$locked_object)

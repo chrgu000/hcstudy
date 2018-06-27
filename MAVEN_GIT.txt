@@ -1,0 +1,53 @@
+maven使用说明
+
+如果新建一个项目，没有jar包和maven包：---反键项目  maven4eclipse update project 就好了
+发布到tomcat里没jar包时 --- 右键项目，选择properties，然后选择deployment assembly-->add-->Maven jar
+
+pluginManagement  --- 插件声明   (插件好像会引起pom.xml文件报错，可以尝试删掉)
+
+mvn dependency:copy-dependencies -DoutputDirectory=lib   -- 可以把jar生成到lib里
+tomcat7:run
+
+
+<!-- 设定主仓库，按设定顺序进行查找。 -->
+<repositories>
+
+<!-- 如有Nexus私服, 取消注释并指向正确的服务器地址.
+<repository>
+<id>nexus-repos</id>
+<name>Team Nexus Repository</name>
+<url>http://127.0.0.1:8888/nexus/content/groups/public</url>
+</repository> -->
+
+<repository>
+            <id>oschina-repos</id>
+            <name>Oschina Releases</name>
+            <url>http://maven.oschina.net/content/groups/public</url>
+        </repository>
+</repositories>
+
+
+<!-- 设定主仓库，按设定顺序进行查找。 -->
+	  <repositories>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Internal Releases</name>
+			<url>http://10.82.1.46:8081/nexus/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>central-releases</id>
+			<name>central Releases</name>
+			<url>http://10.82.1.46:8081/nexus/content/repositories/central/</url>
+		</repository>
+	    <repository>
+			<id>central-repos</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+		</repository>
+	  </repositories>
+
+GIT 帮助
+Git中从远程的分支获取最新的版本到本地有这样2个命令：
+1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge
+2. git pull：相当于是从远程获取最新版本并merge到本地
+3. get revert : 类似svn 还原文件

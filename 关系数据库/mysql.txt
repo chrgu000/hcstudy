@@ -1,0 +1,71 @@
+字符串相加：CONCAT('index!title.action?name=',name)
+IF(1<2,yes ,no);
+IFNULL(1,")
+LPAD('',2,0) 补齐
+substring(xmsqbh,1,14)
+日期：CURDATE() 2011-07-08 /  now()2011-07-08 09:43:01 
+lower(), uppper() 
+日期转字符串：date_format(now(),'%Y-%c-%d %H:%i:%s')
+
+字符串转日期：STR_TO_DATE('2010-10-22 13:12:12','%Y-%m-%d %H:%i:%s' ) 
+
+alter table test_table add unique key `kk_uq` ( kk);
+SELECT CAST('123' AS SIGNED);
+
+mysql> use mysql;    
+mysql> GRANT ALL ON *.* TO admin@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION;  
+
+查看连接数
+show variables like '%max_connections%';
+设置新的MySQL最大连接数为200：
+MySQL> set GLOBAL max_connections=200 
+显示当前运行的Query：
+MySQL> show processlist 
+
+
+
+show variables like '%char%'
+set names gb2312
+
+
+使用 show variables like 'character%' 查看数据库的编码
+set names gb2312
+insert into hc_daily(title,day,txt,userId) values('fsdf哈哈',now(),'sdf',1);
+alter table hc_daily convert to character set utf8;
+insert into hc_daily(txt) values ('文字文字文字');
+
+在执行set serveroutput on以后，使用dbms_output方法可以输出信息
+例如：dbms_output.put_line('This is');
+
+
+select  @rownum:=@rownum+1 AS rownum
+,table_schema,column_name,table_name, column_comment 
+from information_schema.columns ,(select @rownum:=0) t
+where table_schema ='big_data' and table_name = 'pedestrian_sm' 
+and COLUMN_NAME not in ('vehicle_id')
+
+SELECT TABLE_NAME,TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='t_isas';
+
+SELECT * FROM INFORMATION_SCHEMA.Columns
+/* 查询数据库 ‘mammothcode’ 下表 ‘t_adminuser’ 所有字段注释 */
+SELECT table_name,COLUMN_NAME,column_comment FROM INFORMATION_SCHEMA.Columns WHERE table_name='alarm_trigger' AND table_schema='t_isas'
+------------------------------------------------------------MYSQL配置
+安装目录下，mydefault.ini 改为 my.ini
+max_connections=1000  增加连接数
+
+--------------------------------------------表分区
+select * from vehicle partition(p20180425)
+explain partitions select * from vehicle
+
+
+
+SELECT
+      partition_name part, 
+      partition_expression expr, 
+      partition_description descr, 
+      table_rows 
+FROM
+      INFORMATION_SCHEMA.partitions 
+WHERE
+      TABLE_SCHEMA = SCHEMA() 
+AND TABLE_NAME='vehicle'

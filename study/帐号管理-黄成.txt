@@ -1,0 +1,96 @@
+C:\Users\one\AppData\Roaming\Quest Software\Toad for Oracle\12.1\User Files    这么个文件夹（每台电脑位置可能不同），里面有 CONNECTIONS.INI 和 CONNECTIONACTIONS.INI 
+
+172.31.87.254
+StaffFormdPost.js
+192.168.0.254:1521/escj
+--恩施市城乡居民养老保险征收核定系统------------------------
+【系统】
+外网：http://61.136.251.151:8088/ssi/ 
+内网VPN:http://10.133.134.240:8088/ssi/
+用户名和密码：admin
+
+【服务器】
+	@VPN@
+	url:https://61.136.251.151(VPN连接)
+	VPN：联信科技
+	密码：unioninfo2015
+	@服务器@
+	IP:10.133.134.240(内网)
+	用户名：administrator
+	密码：Rsj@8224433
+	@数据库@
+	IP:61.136.251.151
+	用户名：sa
+	密码：422801@jbj
+---------------------------------------------------------------
+www.eszw.net Administrator UnionInfo20150630
+------------------------------------------------------------------
+Xmanager
+linux /home/oracle/backup
+/opt/jdk1.8.0_40/jre/lib/fonts
+jdbc.url=jdbc:oracle:thin:@127.0.0.1:1521:escj
+jdbc.username=escj
+jdbc.password=esrsrc
+
+
+D:\workspace\tomcat\webapps
+
+
+export ORACLE_BASE=/opt/oracle
+export ORACLE_HOME=/opt/oracle/product/OraHome
+export ORACLE_SID=escj
+export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK
+export PATH=$ORACLE_HOME/bin:/usr/sbin:$PATH
+export BDATE=$(date +%Y%m%d)
+export DDATE=$(date -d '7 days ago' +%Y%m%d)
+cd /home/oracle/backup
+echo "starting backup..."
+echo "backup file escj$BDATE"
+exp escj/esrsrc@escj file=escj$BDATE.dmp log=escj$BDATE.log
+zip -m escj$BDATE.zip escj$BDATE.dmp escj$BDATE.log
+#rm -rf escj$BDATE.dmp
+#rm -rf escj$BDATE.log
+#echo "delete 7 days ago file escj$DDATE"
+#rm -rf escj$DDATE.zip
+
+
+
+--------------------------------linux----------------------------------
+linux 下oracle使用imp导入，指定表时tables中的表不使用()括起来 
+imp as1_0/as@orcl file='/opt/database/t.dmp' tables=TB_1,TB_2,TB_3
+
+cd /home/oracle/backup
+tar -zcvf  escj20160305.tar.gz escj20160305.dmp
+
+svn  co https://10.133.139.250:8443/svn/ERP/espm  local_path /usr/local/tomcat8/webapps/c
+
+
+imp espm/espm2016@escj full=y file=/home/oracle/backup/escj20160305.dmp ignore=y log=/home/oracle/backup/log20160305.txt
+
+exp espm/espm2016@escj file=f:YCDZDA123.dmp tables=(sy_role,sy_user)
+
+exp YCDZDA/YCDZDA@orcl file=f:YCDZDA.dmp 
+imp YCDZDA/YCDZDA@orcl full=y file=L:YCDZDA.dmp ignore=y log=L:YCDZDA.txt
+
+rm -rf /usr/local/tomcat8/webapps/cs
+
+-- 将文件下所有文件 转到另一文件夹下
+cp -Rf /usr/local/tomcat8/webapps/escj/upload/* /usr/local/tomcat8/webapps/espm/upload/
+
+sqlplus ycdaxt/ycdaxt@ORCL
+-----------------------------xp---------------------------
+exp YCDZDA/YCDZDA@orcl file=f:YCDZDA.dmp  ignore=y tables=(A0)
+imp YCDZDA/YCDZDA@orcl  file=f:YCDZDA.dmp tables=(A0)
+
+exp espm/espm@escj file=f:\espm.dmp owner=espm
+
+imp ycdaxt/ycdaxt@orcl full=y file=/home/YCDZDA.dmp ignore=y log=/home/log.txt
+
+imp escj/escj@orcl full=y file=l:\422826.DMP
+
+exp ycdaxt/gays@10.27.15.49:1521/ORCL file=/home/oracle/YCDZDA171218.dmp
+exp TDMH_DZDA/TDMH_DZDA@192.168.1.100:1521/TDDZDADB file=d:\stdaxt.dmp
+exp daxtst/daxtst@orcl file=f:st_file.dmp tables=(X_ST_FILES)
+
+exp yccsxt/daxt2017@10.27.15.49:1521/ORCL file=/home/oracle/yccs2018.dmp
+zip -m escj$BDATE.zip escj$BDATE.dmp
