@@ -5,4 +5,6 @@ new JavaEnterprise  选择Web Application 即可
 2、Modules name->WebRoot
   Web Resource Directory里也修改成WebRoot
 三、把项目部署后的文件放到本地tomcat的webapps下
- 参考https://blog.csdn.net/Fight_Rain/article/details/78935503
+参考https://blog.csdn.net/Fight_Rain/article/details/78935503
+四、编码问题。
+	事实证明只在2018版本上有这个问题，设置编码格式后子文件不从父文件编码......装个2017就好了
