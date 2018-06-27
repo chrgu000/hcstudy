@@ -1,3 +1,4 @@
+破解http://idea.iteblog.com/key.php
 一、和 myEclipse一样new一个web项目:
 new JavaEnterprise  选择Web Application 即可
 二、修改web为WebRoot
@@ -8,3 +9,4 @@ new JavaEnterprise  选择Web Application 即可
 参考https://blog.csdn.net/Fight_Rain/article/details/78935503
 四、编码问题。
 	事实证明只在2018版本上有这个问题，设置编码格式后子文件不从父文件编码......装个2017就好了
+
