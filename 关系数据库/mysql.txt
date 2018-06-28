@@ -37,13 +37,13 @@ insert into hc_daily(txt) values ('文字文字文字');
 在执行set serveroutput on以后，使用dbms_output方法可以输出信息
 例如：dbms_output.put_line('This is');
 
-
+-----------------------------------------------------------如同oracle rownum
 select  @rownum:=@rownum+1 AS rownum
 ,table_schema,column_name,table_name, column_comment 
 from information_schema.columns ,(select @rownum:=0) t
 where table_schema ='big_data' and table_name = 'pedestrian_sm' 
 and COLUMN_NAME not in ('vehicle_id')
-
+-----------------------------------------------------------表备注查询
 SELECT TABLE_NAME,TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='t_isas';
 
 SELECT * FROM INFORMATION_SCHEMA.Columns
@@ -57,8 +57,6 @@ max_connections=1000  增加连接数
 select * from vehicle partition(p20180425)
 explain partitions select * from vehicle
 
-
-
 SELECT
       partition_name part, 
       partition_expression expr, 
@@ -69,3 +67,4 @@ FROM
 WHERE
       TABLE_SCHEMA = SCHEMA() 
 AND TABLE_NAME='vehicle'
+-----------------------------------------------------存储过程
