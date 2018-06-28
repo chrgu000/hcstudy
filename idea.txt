@@ -13,3 +13,14 @@ new JavaEnterprise  选择Web Application 即可
 	Modules->web(module名字)->Dependencies-> + -> Library
 六、run一个方法，它build整个项目...简单来说你run一个main方法时，其他方法不能有错
  Edit Configurations删了build,添加这个 build no error check
+七、输出文件修改：
+Project Settings与Modules下Paths->Output path
+原E:\Workspaces\IdeaProjects\zDemo\build\classes
+修改为E:\Workspaces\IdeaProjects\zDemo\WebRoot\WEB-INF\classes
+八、build修改：
+项目中有错误，导致build失败
+单独的rebuild一个正确的class是没有任何问题的
+Java Compiler Use compiler 修改为Eclipse
+九、导入jar包
+ 手动：alt+enter
+ 设置自动：editor->General->Auto Import-> 两个 ...on the fiy勾起
