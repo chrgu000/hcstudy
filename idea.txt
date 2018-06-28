@@ -9,4 +9,7 @@ new JavaEnterprise  选择Web Application 即可
 参考https://blog.csdn.net/Fight_Rain/article/details/78935503
 四、编码问题。
 	事实证明只在2018版本上有这个问题，设置编码格式后子文件不从父文件编码......装个2017就好了
-
+五、像myeclipse一样添加tomcat运行环境.
+	Modules->web(module名字)->Dependencies-> + -> Library
+六、run一个方法，它build整个项目...简单来说你run一个main方法时，其他方法不能有错
+ Edit Configurations删了build,添加这个 build no error check
