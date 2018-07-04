@@ -129,3 +129,6 @@ USING '106.15.60.213:1521/orcl';
 
  sELECT sid, serial#, username, oSUSEr,
 'alter system kill session '''||sid||','||serial#||''''||';' FROM v$session where sid in (select session_id from v$locked_object)
+
+查看oracle 用户执行的sql语句历史记录
+select * from v$sqlarea t order by t.LAST_ACTIVE_TIME desc

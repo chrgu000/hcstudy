@@ -51,3 +51,12 @@ Git中从远程的分支获取最新的版本到本地有这样2个命令：
 1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge
 2. git pull：相当于是从远程获取最新版本并merge到本地
 3. get revert : 类似svn 还原文件
+
+git branch -a 查看远程分支
+git branch 查看当前分支
+
+commit-msg.....我晕。。。。
+git 提交
+不要直接提交到master
+git log --pretty=full -1 
+git push origin HEAD:refs/for/master

@@ -52,7 +52,11 @@ SELECT table_name,COLUMN_NAME,column_comment FROM INFORMATION_SCHEMA.Columns WHE
 ------------------------------------------------------------MYSQL配置
 安装目录下，mydefault.ini 改为 my.ini
 max_connections=1000  增加连接数
-
+--------------------------------------------------------------表日志--------
+SET GLOBAL log_output = 'TABLE';SET GLOBAL general_log = 'ON';  -- 日志开启
+SET GLOBAL log_output = 'TABLE'; SET GLOBAL general_log = 'OFF';  -- 日志关闭
+SELECT * from mysql.general_log ORDER BY event_time DESC; -- 查询
+ truncate table mysql.general_log; -- 
 --------------------------------------------表分区
 select * from vehicle partition(p20180425)
 explain partitions select * from vehicle
@@ -68,3 +72,13 @@ WHERE
       TABLE_SCHEMA = SCHEMA() 
 AND TABLE_NAME='vehicle'
 -----------------------------------------------------存储过程
+
+----------------------------------------------------------表索引
+1.PRIMARY  KEY（主键索引）
+        mysql>ALTER  TABLE  `table_name`  ADD  PRIMARY  KEY (  `column`  ) 
+2.UNIQUE(唯一索引)
+        mysql>ALTER  TABLE  `table_name`  ADD  UNIQUE (`column` ) 
+3.INDEX(普通索引)
+        mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (  `column`  )
+删除索引
+drop index index_vehicle_sm_plate_number on vehicle_sm ;
