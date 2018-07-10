@@ -1,0 +1,25 @@
+服务注册中心
+https://jingyan.baidu.com/article/8ebacdf078820449f65cd592.html
+
+数据库
+https://www.cnblogs.com/liesun/p/7410130.html
+
+
+boot:
+构建Jar包，cmd命令行运行Spring Boot程序
+　　　　第一步：在pom.xml中将packing节点值修改为jar,如下面加粗部分：　　　　　
+
+　　　　　　　　　　<groupId>com.example</groupId>
+　　　　　　　　　　<artifactId>Demo</artifactId>
+　　　　　　　　　　<version>0.0.1-SNAPSHOT</version>
+　　　　　　　　　　<packaging>jar</packaging>
+
+　　　　第二步：右键pom.xml点击Run as - > Maven install,然后刷新target就能看见已成功将项目打成jar包。
+
+　　　　第三步：右键jar包点击Properties属性查看jar包路径，复制jar包所在路径，打开cmd命令窗，
+
+　　　　　　　　输入  cd+jar包所在的文件夹路径，进入到该文件夹路径下，
+
+　　　　　　　　然后输入  java -jar Demo-0.0.1-SNAPSHOT.jar 
+
+　　　　　　　　按回车成功启动即可浏览器访问该项目。
