@@ -1,2 +1,12 @@
 20180627
 init(list) 使用这种方法处理list集合时，因为传递的是对象的引用，故千万不可在init方法里使用new来替换list的引用，否则无效。
+
+
+将Map的key转成List：
+
+List<String> mapKeyList = new ArrayList<String>(map.keySet());   
+1
+2
+将Map的Value转成List：
+
+List<String> mapValueList = new ArrayList<String>(map.valueSet());   
