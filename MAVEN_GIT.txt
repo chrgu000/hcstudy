@@ -60,6 +60,8 @@ git 提交
 不要直接提交到master
 git log --pretty=full -1 
 git push origin HEAD:refs/for/master
+
+先commit，再pull，再push  （防止直接pull时把本地的覆盖 ）
 --------------------------------------------------------
 更新某个文件或某个文件夹
 git fetch
@@ -69,4 +71,12 @@ git checkout -m 版本号 文件/文件夹   如：$ git checkout -m 36fd1f0 main
 git fetch --all
 git reset --hard origin/master(根据本地版本)
 
-g
+git reflog
+-----------------------------------Tortoisegit  与git bash 区别
+git bash 需要先把文件添加到暂缓区，然后再commit
+         1、git add 文件名  2、git commit -m "备注信息"
+Tortoisegit 好像git add 与commit是一步操作。 
+--------------------------------------git stash 使用
+git stash 保存当前的工作现场
+git stash list 查看stash队列
+git stash pop stash@{num}  num就是你要恢复的工作现场的编号
