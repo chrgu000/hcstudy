@@ -68,3 +68,5 @@ git checkout -m 版本号 文件/文件夹   如：$ git checkout -m 36fd1f0 main
 2、强制更新本地目录,之前所做的修改会被覆盖！！！谨慎使用！
 git fetch --all
 git reset --hard origin/master(根据本地版本)
+
+g
