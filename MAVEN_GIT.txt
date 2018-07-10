@@ -46,7 +46,7 @@ tomcat7:run
 		</repository>
 	  </repositories>
 
-GIT 帮助
+GIT 帮助-------------------------------------------------------
 Git中从远程的分支获取最新的版本到本地有这样2个命令：
 1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge
 2. git pull：相当于是从远程获取最新版本并merge到本地
@@ -60,3 +60,11 @@ git 提交
 不要直接提交到master
 git log --pretty=full -1 
 git push origin HEAD:refs/for/master
+--------------------------------------------------------
+更新某个文件或某个文件夹
+git fetch
+git checkout -m 版本号 文件/文件夹   如：$ git checkout -m 36fd1f0 main
+--------------------------------------------------------
+2、强制更新本地目录,之前所做的修改会被覆盖！！！谨慎使用！
+git fetch --all
+git reset --hard origin/master(根据本地版本)
