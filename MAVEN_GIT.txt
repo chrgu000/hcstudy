@@ -61,7 +61,7 @@ git 提交
 git log --pretty=full -1 
 git push origin HEAD:refs/for/master
 
-先commit，再pull，再push  （防止直接pull时把本地的覆盖 ）
+先commit，再pull，再push  （防止直接pull时把本地的覆盖,其实不会覆盖，有冲突是无法pull的 ）
 --------------------------------------------------------
 更新某个文件或某个文件夹
 git fetch

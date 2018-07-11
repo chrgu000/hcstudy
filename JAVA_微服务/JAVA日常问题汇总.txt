@@ -3,10 +3,6 @@ init(list) Ê¹ÓÃÕâÖÖ·½·¨´¦Àílist¼¯ºÏÊ±£¬ÒòÎª´«µİµÄÊÇ¶ÔÏóµÄÒıÓÃ£¬¹ÊÇ§Íò²»¿ÉÔÚinit·
 
 
 ½«MapµÄkey×ª³ÉList£º
-
 List<String> mapKeyList = new ArrayList<String>(map.keySet());   
-1
-2
 ½«MapµÄValue×ª³ÉList£º
-
 List<String> mapValueList = new ArrayList<String>(map.valueSet());   
