@@ -60,6 +60,7 @@ SELECT * from mysql.general_log ORDER BY event_time DESC; -- 查询
 --------------------------------------------表分区
 select * from vehicle partition(p20180425)
 explain partitions select * from vehicle
+alter table vehicle_sm drop partition p20180718;   -- 删除分区
 
 SELECT
       partition_name part, 
