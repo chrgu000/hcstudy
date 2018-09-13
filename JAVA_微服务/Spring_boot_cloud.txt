@@ -23,3 +23,5 @@ boot:
 　　　　　　　　然后输入  java -jar Demo-0.0.1-SNAPSHOT.jar 
 
 　　　　　　　　按回车成功启动即可浏览器访问该项目。
+
+预采用模板：http://www.ruoyi.club/index

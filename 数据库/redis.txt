@@ -1,0 +1,2 @@
+windows 下安装参考文档
+http://www.cnblogs.com/jaign/articles/7920588.html

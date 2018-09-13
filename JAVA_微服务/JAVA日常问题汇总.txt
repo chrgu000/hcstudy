@@ -6,3 +6,7 @@ init(list) Ê¹ÓÃÕâÖÖ·½·¨´¦Àílist¼¯ºÏÊ±£¬ÒòÎª´«µİµÄÊÇ¶ÔÏóµÄÒıÓÃ£¬¹ÊÇ§Íò²»¿ÉÔÚinit·
 List<String> mapKeyList = new ArrayList<String>(map.keySet());   
 ½«MapµÄValue×ª³ÉList£º
 List<String> mapValueList = new ArrayList<String>(map.valueSet());   
+
+
+
+JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m" 

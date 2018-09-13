@@ -45,7 +45,19 @@ tomcat7:run
 			<url>http://repo.maven.apache.org/maven2</url>
 		</repository>
 	  </repositories>
-
+jre环境，版本号还要看自己的开发工具是否支持
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            .......
 GIT 帮助-------------------------------------------------------
 Git中从远程的分支获取最新的版本到本地有这样2个命令：
 1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge

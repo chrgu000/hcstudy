@@ -1,0 +1,2 @@
+tomcatÄÚ´æÅäÖÃ
+JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m" 
