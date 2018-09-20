@@ -1,0 +1,9 @@
+主要添加 @EnableRedisHttpSession来开启spring session支持
+步骤很少，参考https://www.phpsong.com/3519.html
+
+
+
+SESSION的故事，tomcat
+浏览器第一次访问应用A时，应用A在自己的sessionmanage里找不到这次请求的sessionid，所以为这次会话创建了个A_sessionid，并返回浏览器set-cookie设置A_sessionid，下次请求浏览器会带上此A_sessionid。
+假设，浏览器又返回同域下的应用B时，应用B里同样找不到A_sessionid（这个sessionid是A的），所以同样会此次会话创建了B_sessionid，并返回set-cookie里设置B_sessionid。
+此时，浏览器再访问A时，又会重新创建sessionid

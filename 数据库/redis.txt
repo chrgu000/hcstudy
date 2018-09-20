@@ -1,2 +1,13 @@
 windows 下安装参考文档
 http://www.cnblogs.com/jaign/articles/7920588.html
+redis 使用命令：http://www.redis.net.cn/order/3671.html
+我的安装目录：D:\Program Files\Java\Redis
+1、检查redis是否启动：
+进入Redis的目录，cd C:\Program Files\Redis。
+输入redis-cli并回车。（redis-cli是客户端程序）
+如图正常提示进入，并显示正确端口号，则表示服务已经启动
+2、输入密码登录：
+使用服务前需要先通过密码验证。输入“auth 12345”并回车（12345是之前设定的密码）。返回提示OK表示验证通过
+命令：
+DBSIZE key的数量
+keys *   列出全部key
