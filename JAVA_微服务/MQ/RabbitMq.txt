@@ -1,0 +1,10 @@
+https://www.cnblogs.com/wuzhiyuan/p/6845230.html
+
+本地安装路径：
+D:\Program Files\erl8.3
+
+D:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.9
+
+rabbitmq-plugins.bat enable rabbitmq_management
+ 安装之后失败，原因未知。 暂时把环境变量里面的删掉吧！
+%ERLANG_HOME%\bin;%RABBITMQ_SERVER%\sbin;

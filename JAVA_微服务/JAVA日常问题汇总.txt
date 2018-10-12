@@ -10,3 +10,8 @@ List<String> mapValueList = new ArrayList<String>(map.valueSet());
 
 
 JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m" 
+
+
+-----------------------MYECLIPSE问题
+直接export的jar不能用，不知道为什么，但是把jar解压后，再压缩成zip格式，修改后缀成jar就可以用了
+还有种方法，就是到处成war包后，取其中的jar
