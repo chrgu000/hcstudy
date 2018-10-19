@@ -1,4 +1,5 @@
 tomcat内存配置
+
 注意使用的jdk版本对tomcat内存有关系：32位jdk理论上支持最多内存1.5-2g
 window ：
 catalina.bat 文件 第一行 @echo off 下面添加：
@@ -7,3 +8,5 @@ linux ：
 在cygwin=false之上
 添加以下语句
 JAVA_OPTS="-Xms1024m -Xmx4096m -Xss1024K -XX:PermSize=512m -XX:MaxPermSize=2048m"
+
+
