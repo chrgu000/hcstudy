@@ -1,2 +1,6 @@
 tomcat内存配置
 JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m" 
+
+window环境 startup.bat第一行 
+SET CATALINA_OPTS= -Xms256m -Xmx512m -XX:MaxNewSize=256m -XX:MaxPermSize=256m 
+
