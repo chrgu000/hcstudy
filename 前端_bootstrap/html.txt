@@ -1,0 +1,7 @@
+if(window.opener!=null){//·ÇIE
+	window.opener.document.getElementById("search11-inputEl").value = v;
+	window.opener.document.getElementById("search22-inputEl").value = k;
+}else{//IE
+	window.dialogArguments.document.getElementById("search11-inputEl").value = v;//
+	window.dialogArguments.document.getElementById("search22-inputEl").value = k;//
+}

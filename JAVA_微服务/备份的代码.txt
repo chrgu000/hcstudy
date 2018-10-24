@@ -1,0 +1,28 @@
+   /**
+	 * 根据sessionid 返回userinfo
+	 * @param token == 基础平台的sessionid
+	 * @param req
+	 * @return
+	 * @throws IOException
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/verifyToken", method = {RequestMethod.GET, RequestMethod.POST})
+	public AjaxMessageResult<Object> verifyToken(String token,HttpServletRequest req) throws IOException {
+		System.out.println(token);
+		AjaxMessageResult<Object> data = new AjaxMessageResult<Object>();	
+		SessionInformation info = sessionRegistry.getSessionInformation(token);
+		if (info != null) {
+			Object principal =  info.getPrincipal();
+			if (principal instanceof UserDetails) {
+				UserDetailsInfo userInfo = (UserDetailsInfo)principal;
+				//验证成功！！
+				return new AjaxMessageResult<Object>(userInfo);
+			} else {
+				
+			}
+		} else {
+			
+		}
+		return data;
+		
+	}
