@@ -1,0 +1,258 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" /> 
+    <title>Login</title>  
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="convert.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript">
+		//window.location.href="http://www.baidu.com";
+		var url = window.location.search.substring(5); // ?url=
+		var pwd = getCookie("userInfo.originalLoginPassword");
+		var user = getCookie("userInfo.loginName") ;
+		var userInfo = window.localStorage.getItem("userInfo"); //userInfo 为空表示也未登录
+		console.log(url+'-'+userInfo+'-'+pwd+'-'+user);
+
+		//记录登录的客户端-用户，以便后续进行登出操作
+		function loginMark(url){
+		
+		}
+		// 手动登录
+		function login(){
+			var userName = $("#name").val(), password=hex_md5($("#pwd").val()).toUpperCase();console.log(password);
+			$("#login_bth").html("正在登录...");//console.log(password + "--20f21ad3a7a225f0f2c4fcc501a2615601f85bb94769195ce52d1130f2cd8c78");return;
+			$.ajax({
+				url: '/CMS/main/login.do',
+				headers: {Authorization: "Basic " + convert.base64.encode(userName + ':' + password)},
+				type: "get",
+				success: function (result) {
+					console.log(result);
+					$("#login_bth").html("登录");
+					var code = result.code;
+					if (code == '0') {
+                            setCookie('userInfo.userName', result.msg.username);
+							setCookie('userInfo.loginName', result.msg.username);
+							setCookie('userInfo.originalLoginPassword', $("#pwd").val() );
+                            setCookie('userInfo.loginFlag', '1');
+                            
+                            setCookie('userInfo.password', $("#pwd").val() );
+                            //console.log(JSON.stringify( result.msg ));
+                            window.localStorage.setItem("userInfo", JSON.stringify( result.msg ));
+                            var search = window.location.search;
+                            var page = 'webclient.html';
+                            if (search && search.indexOf('page=config') > -1) {
+                                page = 'index.html';
+                            }
+							url = $("#select_id").val();//下拉框中
+							if(url){//登录成功，跳转回去
+								window.location.href=url+"/login.html?page=client&user="+userName+"&pwd="+$("#pwd").val()	
+							}else{
+								window.location = page;
+							}
+                            
+                     }else{
+						alert(result.desc)
+					 }
+				}
+			});
+		}
+		
+		function getQueryVariable(variable)
+		{
+			   var query = window.location.search.substring(1);
+			   var vars = query.split("&");
+			   for (var i=0;i<vars.length;i++) {
+					   var pair = vars[i].split("=");
+					   if(pair[0] == variable){return pair[1];}
+			   }
+			   return(false);
+		}
+		//读取cookies 
+		function getCookie(name) 
+		{ 
+			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+			if(arr=document.cookie.match(reg))
+				return unescape(arr[2]); 
+			else 
+				return null; 
+		} 
+		function setCookie(name,value) 
+		{ 
+			var Days = 30; 
+			var exp = new Date(); 
+			exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+			document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+		} 
+		//初始化完成之后
+		$(function(){
+			select_init();
+			if(url){
+				$("#select_id").find("option:contains('自动')").attr("selected",true);
+				$("#select_id").find("option:contains('自动')").prop("value",url);
+			}
+			//也许本次请求是退出
+			var login = getQueryVariable('login');
+			if(login=='logout'){
+				//基础平台请求退出
+				$.get('/CMS/j_spring_security_logout.do',function(){
+					//通知其他平台退出
+					var _v2200 = getCookie("v2200"),_v2232=getCookie("v2232");
+					if(_v2200)
+					$("#proxy").prop("src",_v2200+"/login.html?iframe=logout");
+					if(_v2232)
+					$("#proxy").prop("src",_v2232+"/login.html?iframe=logout");
+					
+				});
+				
+
+			}else{
+				// 访问cookie查看当前登录的user。如果没登录，则要求登录，如果已经登录了  --  从cookie中取出凭证 再跳转到url页面，url页面根据凭证自动登录
+				if(user && url && pwd && userInfo){
+					console.log("已登录，进行跳转..."+url);
+					// 如果包含? 
+					window.location.href=url+"&user="+user+"&pwd="+pwd
+					
+				}else{
+					console.log("未登录url: "+url+",user："+user+",pwd："+pwd);
+				}
+		
+			}
+			
+		})
+		
+		
+		function save_set(){
+			setCookie("v2232",$("#v2232").val());
+			setCookie("v2200",$("#v2200").val());
+			select_init();
+			alert("保存成功！！");
+		}
+		function select_init(){
+			$("#select_id").find("option:contains('V2232')").prop("value",getCookie("v2232"));
+			$("#select_id").find("option:contains('v2200')").prop("value",getCookie("v2200"));
+			$("#v2232").val(getCookie("v2232"));
+			$("#v2200").val(getCookie("v2200"));
+		}
+		function cs(){alert(1)}
+	</script>
+</head>  
+<body>  
+    <div id="login">  
+        <h1>基础平台统一认证</h1>  
+        
+            <input type="text" required="required" placeholder="用户名" name="u" id="name" autocomplete="off" />  
+            <input type="password" required="required" placeholder="密码" name="p" id="pwd" autocomplete="off" /> 
+			&nbsp;&nbsp;<select id="select_id">
+			  <option value ="">基础平台</option>
+			  <option value ="">V2232</option>
+			  <option value ="">V2200</option>
+			  <option value ="">自动</option>
+			</select>
+            <button class="but" onclick="login()" id="login_bth">登录</button>  
+        
+    </div>  
+	
+	<iframe src="" id="proxy" style="display:none;" ></iframe>
+	
+  
+	<div style="width:400px; height:106px; position:absolute; bottom:0px; right:0;">
+			<div style="font-size:12px;filter:alpha(opacity=20); opacity:0.2; width:250px">
+				<fieldset>
+					<legend><input type="button" onclick="save_set()" value="保存配置" style="font-size:12px"/></legend>
+					v2232:<input type="text" value="http://localhost:8081" id="v2232" style="font-size:12px"/><br/>
+				v2200:<input type="text" value="http://localhost:8081" id="v2200" style="font-size:12px"/>
+			  </fieldset>
+			</div>
+			
+			
+	</div>
+
+</body>  
+</html>  
+
+
+
+
+
+<!-- 美化。。。css 4A374A #afacaf  -->
+
+<style type="text/css">
+		
+		html{   
+			width: 100%;   
+			height: 100%;   
+			overflow: hidden;   
+			font-style: sans-serif;   
+		}   
+		body{   
+			width: 100%;   
+			height: 100%;   
+			font-family: 'Open Sans',sans-serif;   
+			margin: 0;   
+			background-color: #afacaf;   
+		}   
+		#login{   
+			position: absolute;   
+			top: 50%;   
+			left:50%;   
+			margin: -150px 0 0 -150px;   
+			width: 300px;   
+			height: 300px;   
+		}   
+		#login h1{   
+			color: #fff;   
+			text-shadow:0 0 10px;   
+			letter-spacing: 1px;   
+			text-align: center;   
+		}   
+		#login h1{   
+			font-size: 2em;   
+			margin: 0.67em 0;   
+		}   
+		#login input{   
+			width: 278px;   
+			height: 18px;   
+			margin-bottom: 10px;   
+			outline: none;   
+			padding: 10px;   
+			font-size: 13px;   
+			color: #fff;   
+			text-shadow:1px 1px 1px;   
+			border-top: 1px solid #312E3D;   
+			border-left: 1px solid #312E3D;   
+			border-right: 1px solid #312E3D;   
+			border-bottom: 1px solid #56536A;   
+			border-radius: 4px;   
+			background-color: #2D2D3F;   
+		}   
+		#login select{   
+			width: 278px;   
+			height: 18px;   
+			font-size: 13px;   
+			color: #fff; 
+			margin-bottom: 10px;    
+			border-top: 1px solid #312E3D;   
+			border-left: 1px solid #312E3D;   
+			border-right: 1px solid #312E3D;   
+			border-bottom: 1px solid #56536A;   
+			border-radius: 4px;   
+			background-color: #2D2D3F; 
+		}   
+		
+		.but{   
+			width: 300px;   
+			min-height: 20px;   
+			display: block;   
+			background-color: #4a77d4;   
+			border: 1px solid #3762bc;   
+			color: #fff;   
+			padding: 9px 14px;   
+			font-size: 15px;   
+			line-height: normal;   
+			border-radius: 5px;   
+			margin: 0;   
+		}  
+
+	</style>
