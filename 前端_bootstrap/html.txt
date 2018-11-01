@@ -8,3 +8,6 @@ if(window.opener!=null){//非IE
 
 // jsonp 需要后台接口支持
 https://blog.csdn.net/caiwenfeng_for_23/article/details/45300739?utm_source=blogxgwz0
+
+// 自由拖动
+<div class="thumbBox" style="width:200px;height:200px;overflow: hidden; resize: both; display: block;"></div>
