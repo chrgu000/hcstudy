@@ -5,3 +5,6 @@ if(window.opener!=null){//非IE
 	window.dialogArguments.document.getElementById("search11-inputEl").value = v;//
 	window.dialogArguments.document.getElementById("search22-inputEl").value = k;//
 }
+
+// jsonp 需要后台接口支持
+https://blog.csdn.net/caiwenfeng_for_23/article/details/45300739?utm_source=blogxgwz0
