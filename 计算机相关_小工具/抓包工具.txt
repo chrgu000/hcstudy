@@ -1,0 +1,22 @@
+wiresharke
+wiresharke是无法抓取本机自己和自己的通信的
+解决办法：
+ route add 192.168.1.103 mask 255.255.255.255 192.168.1.1 metric 1
+使用完毕后用 route delete 192.168.1.103 mask 255.255.255.255 192.168.1.1 metric 1删除，否则所有本机报文都经过网卡出去走一圈回来很耗性能
+
+或者使用其他抓包工具，如
+SmartSniff 过滤器的规则
+
+[include|exclude] : [local|remote|both] : [tcp|udp|tcpudp|icmp|all] : [IP Range|Ports Range]
+
+[显示|排除] : [本地|远程|双向] : [tcp|udp|tcpudp|icmp|all] : [ip地址范围|端口范围]
+
+例如在菜单：options->Display Filter中添加如下语句：
+include:remote:tcp:9903，就会只显示服务器端口为9903和本机的抓包信息
+---------------------
+
+本文来自 lcfeng1982 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/lcfeng1982/article/details/24643193?utm_source=copy 
+
+
+route add 10.22.2.18 mask 255.255.255.255 10.22.2.1 metric 1
+route delete 10.22.2.18 mask 255.255.255.255 10.22.2.1 metric 1
