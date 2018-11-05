@@ -1,0 +1,131 @@
+JAVA_HOME=/usr/local/java/jdk1.7
+LIUNX 卡在进度条那里 alt + f4
+
+HBase是一个开源的、分布式的、多版本的、面向列的存储模型。
+前提是Hadoop集群和Zookeeper已经安装完毕，并能正确运行。
+
+export JAVA_HOME=/usr/java/jdk1.8.0_101
+export HADOOP_HOME=/usr/local/hadoop
+/usr/local/zookeeper
+/usr/local/hadoop/conf
+/usr/local/hbase
+
+$ZOOKEEPER/bin
+cp zoo_sample.cfg zoo.cfg
+zkServer.sh start
+hadoop-1.2.1-bin.tar.gz
+Zookeeper 安装和配置 http://coolxing.iteye.com/blog/1871009  
+启用：
+zookeeper启用  zkServer.sh start       验证命令：zkServer.sh  status
+hadoop并验证。启动命令：start-all.sh；验证命令：jps
+启动 start-hbase.sh  进入 hbase shell
+ssh ip  （ssh 登录）
+------------------------------------
+LINUX :
+ shutdown -r now ： 表示现在重启计算机！
+vi 文件名
+要编辑文件 需按下i
+保存退出  esc :wq!
+不保存退出 esc :q!
+文本显示行号 :set nu
+linux 中返回上一级目录的命令是： cd ..
+linux 中返回主目录的命令是： cd ~
+rm -f /var/log/httpd/access.log 将会强制删除
+rm -rf /var/log/httpd/access 删除目录以及其下所有文件、文件夹
+cp -rf /home/1.txt  /opt/ 
+
+ctrl c 强制关闭
+解压文件 tar zxvf 文件名.tar.gz
+mkdir 创建文件夹 mv移动文件
+mv /usr/local/hadoop-1.2.1 /usr/loca/hadoop 重命名
+sudo scp /usr/local/hadoop root@192.168.0.251:/usr/local/hadoop 
+sudo scp /usr/local/hadoop root@192.168.0.248:/usr/local/hadoop 
+		传文件(文件夹 scp -r)
+source /etc/profile
+
+---------------------
+使用yum provides */name 进行查找系统自带软件包的信息
+yum provides */rz
+lrzsz包安装完成后包括上传rz、下载sz命令;只需要安装这个包即可。
+yum install -y lrzsz
+--------------------------
+
+1) 重启后生效 
+开启： chkconfig iptables on 
+关闭： chkconfig iptables off 
+
+2) 即时生效，重启后失效 
+开启： service iptables start 
+关闭： service iptables stop 
+systemctl  iptables stop 
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+需要说明的是对于Linux下的其它服务都可以用以上命令执行开启和关闭操作。 
+
+在开启了防火墙时，做如下设置，开启相关端口， 
+修改/etc/sysconfig/iptables 文件，添加以下内容： 
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT 
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+
+sh start-hbase.sh
+---------------------------------hbase 用法   sh stop-hbase.sh 
+cd /usr/local/hbase/bin
+./usr/local/hbase/bin ./hbase shell
+启动 start-hbase.sh  进入 hbase shell
+list 查看有哪些表
+create 't1',{NAME => 'f1', VERSIONS => 2},{NAME => 'f2', VERSIONS => 2}
+
+
+-----------------------------------------linux问题：
+1 /lib/ld-linux.so.2: bad ELF interpreter: No such file or directory
+：yum install glibc.i686
+2 修改 DNS
+: username@host:~$ vi /etc/resolv.conf 
+3 修改ip
+: vi /etc/sysconfig/network-scripts/ifcfg-eth0
+4: service network restart
+5 修改主机名
+：vi /etc/hosts，然后将localhost.localdomain改为想要设置的主机名。
+6 环境变量
+: vi /etc/profile   source /etc/profile
+
+--------------------------------- linux问题Device eth0 does not seem to be present
+解决：# mv /etc/sysconfig/network-scripts/ifcfg-eth0 
+sysconfig/network-scripts/ifcfg-eth1
+
+vi sysconfig/network-scripts/ifcfg-eth1
+
+修改DEVICE="eth0"  为DEVICE="eth1"
+
+
+
+CentOS65 localhost localhost.localdomain localhost4 localhost4.localdomain4
+
+
+ps -ef |grep smon 
+kill -9 31111
+
+find / -name tnsnames.ora
+你的ORACLE_SID参数有问题，有三个地方的SID可以查看一下是否一致：
+
+1、$ORACLE_BASE/admin/SID_NAME/pfile文件夹下的init文件中的SID；
+
+2、/etc/oratab中的最后一行第一个“：”前，如“oracl:/u01/app/oracle/product/11.2.0/dbhome_1:N”中的“oracl”;
+
+3、~/.bash_profile中的SID;
+
+
+/home/oracle/app/oracle/product/11.2.0/dbhome_1/dbs
+
+压缩：zip YCDZDA.zip YCDZDA.dmp
+
+1.开放端口命令： /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+2.保存：/etc/rc.d/init.d/iptables save
+3.重启服务：/etc/init.d/iptables restart
+4.查看端口是否开放：/sbin/iptables -L -n
+/etc/init.d/iptables status 暂时关闭防火墙： 
+/etc/init.d/iptables stop
+
+启动hdfs:./sbin/start-dfs.sh     ./sbin/stop-dfs.sh
+启动yarn:./sbin/start-yarn.sh    ./sbin/stop-yarn.sh
+启动 start-hbase.sh               stop-hbase.sh 
+

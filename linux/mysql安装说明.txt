@@ -1,0 +1,47 @@
+https://blog.csdn.net/u012899746/article/details/80691777
+47.105.84.19
+
+character_set_server=utf8
+
+export MYSQL_HOME="/usr/local/mysql"
+export PATH="$PATH:$MYSQL_HOME/bin"
+
+service mysql start
+service mysql status
+service mysql stop
+##### error：
+Starting MySQL.. ERROR! The server quit without updating PID file (/data/mysql/26765574162f.pid).
+1、vim /etc/my.cnf  增加如下：
+ basedir = /usr/local/mysql
+ datadir = /usr/local/mysql/data
+ pid-file=/usr/local/mysql/data/mysql.pid
+ user = mysql
+ tmpdir = /tmp
+2、重新初始化mysql:     script目录下
+./mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --pid-file=/usr/local/mysql/data/mysql.pid --tmpdir=/tmp
+
+七、启动成功后，登录mysql及改密码与配置远程访问
+./mysqladmin -u root password 'Lqy201811'  **********************报错：
+
+# /etc/init.d/service mysql stop
+# mysqld_safe --user=mysql --skip-grant-tables --skip-networking & 
+# mysql -u root mysql 
+
+mysql> UPDATE user SET Password=PASSWORD('Lqy201811') where USER='root';
+mysql> FLUSH PRIVILEGES; 
+mysql> quit 
+
+service mysql stop
+service mysql start
+
+# mysql -uroot -p 
+Enter password: <输入新设的密码newpassword> 
+
+允许root用户远程访问
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Lqy201811' WITH GRANT OPTION; 
+
+**********************************防火墙 添加端口
+vi /etc/sysconfig/iptables 
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+
+centos7 : systemctl restart iptables.service

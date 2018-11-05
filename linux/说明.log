@@ -1,0 +1,46 @@
+个人的资料 都放在收藏夹里
+其他项目的资料 理论上放在各自的文件夹里
+
+
+86716823
+mw18672981188
+sqlplus scott/tiger@ora @c:/create_sql.sql
+select t.*, t.rowid from SY_RIGHTS t where right_sno = '0618'
+
+select * from SB_DICTIONARIES  WHERE LABEL IN ('MBKH','DADB','WMDW')
+
+-- 恢复一张表
+imp espm/espm@escj file=/home/oracle/backup/escj20161207.dmp ignore=y tables=(bs_substaff)
+
+
+12.7 lsof |grep
+
+root 123456
+251
+https://10.133.128.235/
+C:\Program Files\Internet Explorer
+
+C:\Windows\debug
+
+10.133.128.65
+root /esrsrc&_2015
+
+cd /usr/local/tomcat8/bin/
+./catalina.sh start
+cd /usr/local/tomcat8/webapps/espm/
+
+/usr/local/tomcat/apache/bin/catalina.sh start
+
+tail -f catalina.out
+ps -ef |grep tomcat      -- 查看tomcat的进程
+svn up 
+su root expect "esrsrc&_2015"
+passwd -d espm_svn
+spawn su expect "Password:" exp_send "esrsrc&_2015\r"
+espm_svn /bin/sh -c cd /usr/local/tomcat8/webapps/espm/  && svn up
+在职：
+月工资总额=年终一次性奖金/12+上年度奖励性补贴/12+第12月份基本工资额+艰边津贴+其他国家规定津补贴+规范津补贴/绩效+住房补贴+物业补贴+交通+通讯+住房公积金
+文明奖等4项奖=月工资总额*月数/12
+退休：
+月工资总额=上年度奖励性补贴/12+第12月份基本离退休费+艰边津贴+离退休补贴+住房补贴+物业补贴+2016养老金增加额
+文明奖等3项奖=月工资总额*月数/12
