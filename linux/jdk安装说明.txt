@@ -1,6 +1,7 @@
 1、准备好jdk相关版本，如： jdk-7u75-linux-x64.tar.gz
 2、新建好存放jdk的目录，如：/usr/local/java/jdk1.7
 3、解压jdk-7u75-linux-x64.tar.gz包。tar xvf  jdk-7u75-linux-x64.tar.gz
+      mv /usr/local/hadoop-1.2.1 /usr/loca/hadoop 重命名
 4、配置环境变量：
 	1 cd /etc
         2 vi profile
@@ -13,7 +14,7 @@ export JAVA_HOME JRE_HOME PATH CLASSPATH
 
 
 
-
+/usr/local/jdk1.8
 
 
 tomcat 安装
@@ -29,3 +30,7 @@ JAVA_OPTS="-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:Ma
 1、cd /usr/local/tomcat8/bin/
   ./catalina.sh stop
   ./catalina.sh start
+tail -f /usr/local/tomcat8/logs/catalina.out
+
+systemctl restart iptables.service
+systemctl stop iptables.service
