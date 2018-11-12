@@ -30,7 +30,10 @@ JAVA_OPTS="-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:Ma
 1¡¢cd /usr/local/tomcat8/bin/
   ./catalina.sh stop
   ./catalina.sh start
+
 tail -f /usr/local/tomcat8/logs/catalina.out
 
 systemctl restart iptables.service
 systemctl stop iptables.service
+
+
