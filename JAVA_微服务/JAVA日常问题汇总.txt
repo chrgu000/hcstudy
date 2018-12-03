@@ -10,3 +10,7 @@ List<String> mapValueList = new ArrayList<String>(map.valueSet());
 
 
 JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m" 
+
+
+myeclipse 
+tomcat 不进debug，要以debug模式进入

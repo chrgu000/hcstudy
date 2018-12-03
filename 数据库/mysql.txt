@@ -83,3 +83,5 @@ AND TABLE_NAME='vehicle'
         mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (  `column`  )
 É¾³ýË÷Òý
 drop index index_vehicle_sm_plate_number on vehicle_sm ;
+---------------------------------------------------------Ãâ°²×°£º
+https://www.cnblogs.com/chinesern/p/9179616.html

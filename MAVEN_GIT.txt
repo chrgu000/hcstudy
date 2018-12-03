@@ -45,6 +45,24 @@ tomcat7:run
 			<url>http://repo.maven.apache.org/maven2</url>
 		</repository>
 	  </repositories>
+------------------------------------------------------------MAVEN上传jar到nexus
+myeclipse run->maven build->goals: deploy 上传jar包
+前提配置：
+上传项目pom.xml ：
+	<distributionManagement><!-- 上传需要 -->    
+		<repository>    
+		  <id>nexus-releases</id>
+          <name>local private nexus</name>
+          <url>http://10.82.1.46:8081/nexus/content/repositories/releases/</url>
+		</repository>    
+		<snapshotRepository>    
+		  <id>nexus-snapshots</id>
+          <name>local private nexus snapshots</name>
+          <url>http://10.82.1.46:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>    
+	  </distributionManagement>
+本地maven仓库全局settings.xml 配置
+
 jre环境，版本号还要看自己的开发工具是否支持
 <build>
         <plugins>
@@ -102,3 +120,6 @@ Tortoisegit 好像git add 与commit是一步操作。
 git stash 保存当前的工作现场
 git stash list 查看stash队列
 git stash pop stash@{num}  num就是你要恢复的工作现场的编号
+
+-------------------------- 避免Merge branch 'master' of
+https://www.cnblogs.com/Sinte-Beuve/p/9195018.html
