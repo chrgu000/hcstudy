@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+     /* em,span, i, strong, b, .div3{
+            overflow: hidden;
+            margin-left: 30px;
+            float: left;
+            resize: both;
+        } 
+		  .div3 input{width:300px;height: 40px; border: 1px solid #989898;}
+		
+          .div1 textarea{
+            resize: both;
+            background: red;
+            width: 300px;
+            height: 300px;
+            display: block;
+            float: left;
+        }  
+        em,span,i,strong,b{
+            width: 100px;
+            height: 400px;
+            background: green;
+        } */
+        
+    </style>
+</head>
+<body>
+<div class="div1" style="resize: both;display: block; width:200px; height:200px">
+    <textarea name="test" style="width:100%;height:100%;" placeholder="请随意拖我呀" ></textarea>
+</div>
+<b>请随意拖我呀</b>
+<b class="thumbBox" style=" width: 100px;height: 400px;background: green; overflow: hidden; resize: both; display: block;">11111</b>
+<!--input没法随意改变大小-->
+<div class="div3"><input type="text" placeholder="请随意拖我呀"></div>
+<div class="thumbBox" style="width: 100px;height: 100px;overflow: hidden; resize: both; display: block;">2222</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+12345677  15607106910 15570544407 5.115 Tdmh20170327
+阿里云公网IP：39.105.6.33 登录名：administrator 登录密码：Whtdmh@20180412
+----------------------------------------
+dzda.zhxcool.cn:8089/services/ArchivesService?wsdl
+,credssp.dll
+阿里云用户：czlxx2012,登录名：administrator,密码：Whtdmh@2017 
+管理终端远程连接密码：784090
+实例ID:i-uf6c8l39iqt55kfup8ug
+实例名称:iZiqt55kfup8ugZ
+公网IP：106.15.60.213
+内网IP：10.30.126.16 	
+--------------------------------------254  数据库
+daxysb  123456
+-----------------------------------本部
+http://106.15.60.213/mantis/login_page.php 
+huangcheng 123456
+huangcheng@whtdmh.com Admin123  Qq1398
+192.168.5.254 admintdmh
+-------------------------------------宜昌 rdpclip.exe
+用户名：whtdzpt
+密码：9721**dd
+https://10.19.196.5  matao matao2016    root/4rfv%TGB   oracle/oracle
+数据库ycdaxt/daxt2017
+   YCCSXT/daxt2017
+exp ycdaxt/daxt2017@10.27.15.49:1521/ORCL file=/home/oracle/daxt171012.dmp
+zip -r daxt20171012.zip daxt      -r 表示递归
+-------------------------------------省厅 10.128.5.37:1521/dapt
+10.128.31.104  administrator whbkty_1024a
+110
+数据库 192.168.1.100 root/Bkp@ssw0rd     /home/oracle  TDMH_DZDA
+http://10.128.31.104:8081/daxt cz cz
+感应器：10.128.31.200  报警器：10.128.31.199
+wifi 密码 admin123456
+10.128.5.37 oracle_sid=dapt sys/Oracle_dapt2017   (system)
+自建  daxt  daxt2017
+10.128.8.10
+堡垒机：sunjp  sunjianpeng2017
+堡垒机金融：huangc aok5555xob69   -- 10.128.5.30:8080/stjrhz
+-------------------------------------襄阳
+序号 761 986 767  350900582 验证码0586
+10.131.122.14 Administrator Uh3Rp_aA
+数据库 XYDAXT XYDAXT
+http://10.131.122.14:8080/daxt
+感应器：10.131.28.199    10.131.28.200
+报警器：10.131.28.201    10.131.28.202
+我们远程的电脑的IP：10.131.28.88
+10.131.24.188
+10.131.28.254
+-------------------------------------襄州
+10.131.55.199:8080/daxtxz
+administrator XZtd123456
+oracle: scott Tdmh_rhehr_14167389
+---------------------------------------自己的阿里云
+https://netcn.console.aliyun.com
+ftp  : bxw271358053 qq13986461
+mysql: bdm286674435.my3w.com bdm286674435 qq13986461
+新：更换系统了，支持PHP
+ftp: bxu2359760503.my3w.com  bxu2359760503 qq13986461
+mysql: bdm243712379.my3w.com bdm243712379  qq13986461
+-------------------------------------------------- 自己的花生壳
+huangchengok
+huangchengok1
+-----------------------------------------------------git
+hchenggit
+
+50是测试
+http://10.27.15.51:8080/daxt/   admin   1234566
+
+daxt2017
+数据库归档：
+http://baike.baidu.com/link?url=jszBTVuydBA4NBhQ8RTRav_w7l1V9MWUS1XRBWUJUG8TSxjGtLxLPeg00rd_ouDilEB8z0AI60ijGEhsJmZl_YyVo3oiWIdYKCQt7lAk_QFYZPHHS7DGrbmXwdxyDe-lOPZBrTz0NGNGYtK45-KPTK
+数据库归档日志满：
+http://blog.csdn.net/cw370008359/article/details/51023794
+解决：
+http://www.linuxidc.com/Linux/2014-10/108126.htm
+
+
+http://www.oschina.net/p/hierapolis
+
+106.15.60.213  stdaxt
+
+
+svn://10.27.15.50/svndata
+hc hc
+/var/svn
+
+svn  co svn://10.27.15.50/svndata/test  /usr
+svn  co svn://10.27.15.50/svndata/daxt
+svn revert /usr/local/tomcat/apache-tomcat-7.0.52/webapps/dax
+B-INF/classes/spring-mvc.xml
+
+grep -n "ORA" 文件名
+sed -n "开始行，结束行p" 文件名
+--50测试
+/usr/local/tomcat/apache/bin/catalina.sh stop
+/usr/local/tomcat/apache/bin/catalina.sh start
+tail -f /usr/local/tomcat/apache/logs/catalina.out
+--51正式
+tail -f /usr/local/tomcat/apache-tomcat-7.0.52/logs/catalina.out
+
+/usr/local/tomcat/apache-tomcat-7.0.52/bin/catalina.sh stop
+/usr/local/tomcat/apache-tomcat-7.0.52/bin/catalina.sh start
+tail -f /usr/local/tomcat/apache-tomcat-7.0.52/logs/catalina.out
+
+cp -rf /home/1.txt  /opt/
+cp -rf /usr/local/tomcat/apache-tomcat-7.0.52/webapps/daxt1/userfiles/images /usr/local/tomcat/apache-tomcat-7.0.52/webapps/daxt/userfiles/images
+
+d:
+cd d://tomcat
+service.bat install
+添加字体：
+/usr/share/fonts/xpfonts/simsun.ttc
+建立字体缓存 cd /usr/share/fonts/xpfonts
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
+fc-list :lang=zh
+
+1.lsnrctl start  
+会看到启动成功的界面;
+
+1.lsnrctl stop  
+停止监听器命令.
+
+
+1.lsnrctl status  
+查看监听器命令.
+
+支付楚天龙公司社保卡制卡费用
+0.000610
+城镇社会保障卡制卡费用
+王婧
+13227629960
+电子档案系统版本
+业务档案，组卷功能，V1.0 主要地区  宜昌电子档案系统、襄阳社保局电子档案系统
+人事档案， V2.0 主要地区 省厅、襄阳人才

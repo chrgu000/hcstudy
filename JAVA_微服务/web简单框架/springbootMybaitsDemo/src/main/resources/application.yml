@@ -1,0 +1,32 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  # reids配置
+  redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      password: 123456
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.xdd.entity
+  mapperLocations: classpath:mapper/*.xml
+
+
+
+---
+#开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3316/test
+    username: root
+    password: vms123
+    driver-class-name: com.mysql.jdbc.Driver

@@ -1,0 +1,26 @@
+参考文档：https://www.cnblogs.com/ericli-ericli/p/5902270.html
+1、安装Erlang
+配置环境变量 d:\Program Files\erl8.3
+ERLANG_HOME=”d:\Program Files\erl8.3” ，后面配置erlang的安装目录，不包括引号。
+在path中增加“%ERLANG_HOME%\bin”
+在命令行中输入“erl”,如果显示版本号就好了，如果报错，重启系统后再测试，还是不行检查环境变量
+
+2.安装RabbitMQ
+激活 RabbitMQ's Management Plugin
+rabbitmq-plugins.bat enable rabbitmq_management
+
+启动时，一定要以管理员身份启动，否则会报错：拒绝访问
+net stop RabbitMQ && net start RabbitMQ
+
+
+3、建用户，并访问
+http://localhost:15672
+
+查看已有用户及用户的角色：rabbitmqctl.bat list_users
+新增一个用户 rabbitmqctl.bat add_user username password
+授权为超级用户：rabbitmqctl.bat set_user_tags username administrator
+
+
+
+消息生产者：即消息发送者
+消息消费者：即消息接收者

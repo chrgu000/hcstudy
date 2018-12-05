@@ -1,0 +1,972 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=10; IE=EDGE"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+            font-family: '宋体';
+            height: 100%;
+            width: 100%;
+            overflow: hidden
+        }
+
+        .v-login-top {
+            background-color: #fff;
+            height: 48px;
+            width: 100%;
+        }
+
+        .v-login-main {
+            text-align: center;
+            background-color: #d0d0d0;
+            width: 100%;
+            background-image: url('images/background.png');
+            background-size: 100% 100%;
+            position: absolute;
+            top: 48px;
+            bottom: 0;
+            height: auto
+        }
+
+        .v-login-form {
+            width: 400px;
+            height: 220px;
+            margin: auto auto;
+        }
+
+        .v-login-label {
+            color: #2267ae;
+            line-height: 24px;
+            margin: 4px auto;
+            text-align: left;
+        }
+        .v-login-radio{
+            color: #2267ae;
+        }
+        .v-login-input {
+            background-color: #fff;
+            width: 100%;
+            height: 32px;
+            border-width: 0;
+            line-height: 32px;
+        }
+
+        .v-login-button {
+            background-color: #fff;
+            height: 32px;
+            border-width: 0;
+            width: 130px;
+            color: #2267ae;
+            cursor: pointer
+        }
+
+        .v-login-button-over {
+            background-color: #87CEEB
+        }
+
+        .v-login-button-disabled {
+            cursor: default;
+            opacity: 0.5;
+            background-color: #f7f7f7
+        }
+
+        .v-login-cb-label {
+            color: #2267ae;
+            line-height: 25px;
+        }
+
+        .v-login-checkbox {
+            width: 20px;
+            height: 20px;
+            background: url('images/checkbox-off.png') no-repeat 0px 1px;
+            border-width: 0
+        }
+
+        .v-login-checkbox-checked {
+            background-image: url('images/checkbox-on.png');
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .msgBox {
+            color: #2267ae;
+        }
+    </style>
+    <script type="text/javascript">
+        if (!window.console || !console.firebug){
+            var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+
+            window.console = {};
+            for (var i = 0; i < names.length; ++i)
+                window.console[names[i]] = function() {}
+        }
+    </script>
+</head>
+<body>
+    <div id="loginTop" class="v-login-top">
+        <img src="images/logo.png" border="0" style="margin:12px 0 0 20px;">
+		<span style="color:#6D6D6D;font-size: 2em; margin: 0.67em 0; font-size:18px;font-weight:600;text-shadow:0 0 10px; letter-spacing: 1px; ">统一认证平台 </span>
+    </div>
+
+    <div id="loginMain" class="v-login-main">
+        <script type="text/javascript" defer="defer">
+            var p = window.location.search.substr(1).split(/[&]/), map = {};
+            for (var i = 0; i < p.length; i++) {
+                var q = p[i].split('_');
+                if (q.length > 1) {
+                    map[q[0]] = q[1];
+                }
+            }
+            un = map['userName'];
+            pw = map['password'];
+            if (un && pw) {
+                document.getElementById('loginMain').style.display = 'none';
+                document.getElementById('loginTop').style.display = 'none';
+            }
+        </script>
+        <div style="width: 100%;height: 20px;margin-top: 10px;font-size: 14px">
+            <div style="float: right;margin: 0px 10px 0px 10px;"><a id="downloadPluginA" href="#">下载插件</a></div>
+            <div style="float: right;margin: 0px 10px 0px 10px;"><a id="downloadToolsA" href="#">下载工具</a></div>
+            <div style="float: right;margin: 0px 10px 0px 10px;"><a id="certificateLandA" href="javascript:void(0)">证书登陆</a></div>
+            <div style="float: right;"><a id="IEsecuritySet" href="#">安全设置</a></div>
+        </div>
+    <table width="100%" height="100%">
+        <tr>
+            <td>
+                <div id="loginForm" class="v-login-form">
+                    <div id="radiobox" class="v-login-radio">
+                        <form>
+                            <input type="radio" id="localUser" style="margin-bottom: 5px;vertical-align: middle" name="userType" value="local" checked>
+                            <label id="localUserLabel" class="v-login-cb-label">本地用户</label>
+                            <input style="margin-left: 20px;margin-bottom: 5px;vertical-align: middle" type="radio" id="centerUser" name="userType" value="center">
+                            <label id="centerUserLabel" class="v-login-cb-label">中心用户</label>
+                        </form>
+                    </div>
+                    <div id="userNameLabel" class="v-login-label">用户名</div>
+                    <div>
+                        <input type="text" id="loginUserName" class="v-login-input" name="userName"/>
+                    </div>
+                    <div id="pwdLabel" class="v-login-label">密码</div>
+                    <div class="v-login-form-div">
+                        <input type="password" id="loginPassword" class="v-login-input" name="userName"/>
+                    </div>
+                    <div style="position:relative;margin-top:20px;">
+                        <div style="position:absolute;left:0;">
+                            <input type="button" name="isAutoLogin" class="v-login-checkbox" checked="0">
+                            <label id="remPwdLabel" class="v-login-cb-label">记住密码</label> &nbsp;
+							<select id="select_id" style="border:1px solid #CCC;background:#fff;color:#666;padding:5px;outline:none;">
+							  <option value ="">基础平台</option>
+							  <option value ="http://localhost:8081">V2232</option>
+							  <option value ="">V2200</option>
+							  <option value ="">自动</option>
+							</select>
+                        </div>
+                        <div style="position:absolute;right:0;">
+                                <input type="button" value="登录" id="loginBtn" class="v-login-button">
+                                <input type="button" style="margin-left: 5px;display: none" value="证书登陆" id="loginBtnThird" class="v-login-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="msgBox hide">
+                    <span class="msg"></span><a style="font-size: 16px;color:#f00"></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    </div>
+
+    <div style="display: none;">
+        <object id="pluginObject" classid="CLSID:BB564B2C-8FA9-46FC-A09C-050A0837A916"></object>
+        <object classid="clsid:B0EF56AD-D711-412D-BE74-A751595F3633"
+                id="JITDSignOcx"></object>
+        <object classid="clsid:707C7D52-85A8-4584-8954-573EFCE77488"
+                id="policeJITDSignOcx"></object>
+    </div>
+</body>
+<script type="text/javascript">
+    var iePersion = 0;
+    if(navigator.appName == "Microsoft Internet Explorer" && (navigator.appVersion.match(/8./i)=="8."||navigator.appVersion.match(/7./i)=="7."))
+    {
+        iePersion = 8;
+    }
+    if(8 == iePersion){
+        console = {
+            log:function(){},
+            info:function(){}
+        }
+        if (!Array.prototype.indexOf) {
+            Array.prototype.indexOf = function (elt /*, from*/) {
+                var len = this.length >>> 0;
+
+                var from = Number(arguments[1]) || 0;
+                from = (from < 0)
+                        ? Math.ceil(from)
+                        : Math.floor(from);
+                if (from < 0)
+                    from += len;
+
+                for (; from < len; from++) {
+                    if (from in this &&
+                            this[from] === elt)
+                        return from;
+                }
+                return -1;
+            };
+        }
+    }
+    var loadScript = function (scripts, callback) {
+        var loadedCount = 0;
+        var count = scripts.length;
+
+        for (var i = 0, len = scripts.length; i < len; i++) {
+            var script = document.createElement('script');
+            script.setAttribute('type', 'text/javascript');
+            script.setAttribute('src', scripts[i]);
+            var head = document.getElementsByTagName('head')[0];
+            head.appendChild(script);
+            if(8 == iePersion)
+            {
+                script.onreadystatechange = function (e)
+                {
+                    if (this.readyState == 'loaded'||this.readyState == "complete")
+                    {
+                        this.onreadystatechange = null;
+                        ++loadedCount;
+                        if (loadedCount >= count && callback)
+                        {
+                            callback();
+                        }
+                    }
+                }
+            }
+            else{
+                script.onload = function () {
+                    ++loadedCount;
+                    if (loadedCount >= count && callback) {
+                        callback();
+                    }
+                }
+            }
+        }
+    };
+</script>
+<script type="text/javascript">
+    var lan = window.navigator.language || window.navigator.browserLanguage;
+    if (lan == "zh-CN" || lan == "zh-cn") {
+        lan = "cn";
+    }
+    else {
+        lan = "en";
+    }
+    var lang = "./language/lang-" + (lan == "cn" ? "zh-CN" : "en") + ".js";
+    var scripts = ["convert.js", "js/Regex.js", "Base64Util.js", "alarmType.js","js/md5.js"];
+    if(8 == iePersion){
+        loadScript(["ext4.2/ext-all-debug-ie8.js", lang, "Global.js"], function () {
+                    loadScript(scripts, callback);
+                }
+        );
+    }else{
+        loadScript(["ext4.2/ext-all.js", lang, "Global.js"], function () {
+                    loadScript(scripts, callback);
+                }
+        );
+    }
+    var callback = function () {
+        function checkPlugin(plugFileVersion, pluginCoreVersion) {
+            var hasInstalledPlugs=true;
+            var checkBox = new Ext.dom.Element(Ext.query('.msgBox')[0]);
+            var filePath = 'download/ClientPlugin_VMS_' + plugFileVersion + '.' + pluginCoreVersion + '.exe';
+            try {
+                new ActiveXObject('INFRBPLAY.InfRBPlayCtrl.1');
+                var obj = document.getElementById('pluginObject');
+                if (!obj.GetVersion || obj.GetVersion() != pluginCoreVersion) {
+                    checkBox.removeCls("hide");
+                    checkBox.down("a").dom.href = filePath;
+                    checkBox.down("a").dom.innerText = Lang.login.download;
+                    checkBox.down(".msg").dom.innerText = Lang.login.oldPlugin;
+                    console.log('version:' + obj.GetVersion());
+                    this.ocxNotMatch = true;
+                }
+                if (!obj.GetVersion) {
+                    hasInstalledPlugs = false;
+                }
+            }
+            catch (ex) {
+                checkBox.removeCls("hide");
+                checkBox.down("a").dom.href = filePath;
+                checkBox.down("a").dom.innerText = Lang.login.download;
+                checkBox.down(".msg").dom.innerText = Lang.login.noPlugin;
+                hasInstalledPlugs = false;
+                this.ocxNotMatch = true;
+            }
+            finally {
+                var p = window.location.search.substr(1).split(/[&]/), map = new Ext.util.MixedCollection();
+                for (var i = 0; i < p.length; i++) {
+                    var q = p[i].split('_');
+                    if (q.length > 1) {
+                        map.add(q[0], q[1]);
+                    }
+                }
+                var un1, pw1;
+                var encodeName = map.get('userName'), encodePassword = map.get('password');
+                if (encodeName && encodePassword) {
+                    un1 = Ext.Base64Util.decode(encodeName);  //解密后的用户名
+                    pw1 = Ext.Base64Util.decode(encodePassword);//解密后的密码
+                }
+                var un = encodeName ? un1 : "";
+                var pw = encodePassword ? pw1 : "";
+                if (un && pw)
+                {
+                    document.getElementById("loginUserName").value = un;
+                    document.getElementById("loginPassword").value = pw;
+                    if (hasInstalledPlugs) {
+                        document.getElementById('loginBtn').click();
+                    }
+                    else {
+                        document.getElementById('loginMain').style.display = 'block';
+                        document.getElementById('loginTop').style.display = 'block';
+                        alert("先装插件！");
+                    }
+                }
+            }
+        }
+
+        function domAddCls(dom, cls) {
+            if (dom && cls) {
+                if (dom.className) {
+                    var classList = dom.classList, newCls, changed = true;
+                    var className = dom.className.replace(/^\s+| \s+$/g, '');
+                    if (classList) {
+                        if (classList.contains(cls)) {
+                            changed = false;
+                        }
+                    }
+                    else {
+                        var clsList = className.split(/\s/);
+                        for (var i = 0; i < clsList.length; i++) {
+                            if (clsList[i] == cls) {
+                                changed = false;
+                                return;
+                            }
+                        }
+                    }
+                    if (changed) {
+                        newCls = [className, cls];
+                        dom.className = newCls.join(' ');
+                    }
+                }
+                else {
+                    dom.className = cls;
+                }
+            }
+        }
+
+        function domRemvoeCls(dom, cls) {
+            if (dom && cls) {
+                if (dom.className) {
+                    if (dom.classList) {
+                        dom.classList.remove(cls);
+                    }
+                    else {
+                        var className = dom.className.replace(/^\s +|\s+$/g, '');
+                        var clsList = className.split(/\s/), changed = false, newCls = [];
+                        for (var i = 0; i < clsList.length; i++) {
+                            if (clsList[i] == cls) {
+                                changed = true;
+                            }
+                            else {
+                                newCls.push(clsList[i]);
+                            }
+                        }
+                        if (changed) {
+                            dom.className = newCls.join(' ');
+                        }
+                    }
+                }
+            }
+        }
+
+        function checkboxClick() {
+            var checkBox = Ext.query('.v-login-checkbox')[0];
+            if(iePersion==8)
+            {
+                var checked = checkBox.checked;
+                if(checked){
+                    checkBox.checked=false;
+                    domRemvoeCls(checkBox,'v-login-checkbox-checked');
+                }else{
+                    checkBox.checked=true;
+                    domAddCls(checkBox,'v-login-checkbox-checked');
+                }
+            }
+            else{
+                var checked = checkBox.getAttribute('checked');
+                if (checked == 1) {
+                    checkBox.setAttribute('checked', '0');
+                    domRemvoeCls(checkBox, 'v-login-checkbox-checked');
+                }
+                else {
+                    checkBox.setAttribute('checked', '1');
+                    domAddCls(checkBox, 'v-login-checkbox-checked');
+                }
+            }
+        }
+
+        function submitForm() {
+            //ocx match
+            try{
+                if(this.ocxNotMatch
+                        && window.versionJsonContent.pluginVersion.forbiddenLoginWhenOcxNotMatch){
+                    alert(Lang.ocxNotMatchLoginForbidden);
+                    return;
+                }
+            }catch (e){
+                console.log(e);
+            }
+            try{
+                var ip = window.location.hostname;
+                var WshShell = new ActiveXObject("WScript.Shell");
+                //添加信任站点ip
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\Ranges\\Range100\\", "");
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\Ranges\\Range100\\http", "2", "REG_DWORD");
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\Ranges\\Range100\\:Range", ip);
+                //修改IE ActiveX安全设置
+                //XSS筛选  禁用
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\1409", "3", "REG_DWORD");
+                //弹出阻止 禁用
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\2301", "3", "REG_DWORD");
+                //文件下载 启用
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\1803", "0", "REG_DWORD");
+                //剪切板编程   启用
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Zones\\3\\1407", "0", "REG_DWORD");
+                //禁用xinxp弹出窗口阻止程序
+                WshShell.RegWrite("HKCU\\Software\\Microsoft\\Internet Explorer\\New Windows\\PopupMgr", "no");
+            }catch(e){
+                console.log(e);
+            }
+
+            var btn = document.getElementById('loginBtn');
+            if (btn.disabled) {
+                return false;
+            }
+            var userName = Ext.String.trim(document.getElementById('loginUserName').value);
+            if (!userName) {
+                alert(Lang.login.inputName);
+                return;
+            }
+            var type='local';
+            var userType = document.getElementsByName("userType");
+            for(var i=0; i<userType.length; i ++){
+                if(userType[i].checked){
+                   type =userType[i].value;
+                }
+            }
+            var macAddr,hostAddrInfo;
+            var obj = document.getElementById('pluginObject');
+            try{
+                hostAddrInfo = obj.GetHostAddrInfo();
+                this.macAddr = Ext.decode(hostAddrInfo)[0];
+            }catch(e){
+                this.macAddr = {};
+            }
+            if(this.macAddr){
+                macAddr = this.macAddr.mac;
+            }
+            var password = Ext.String.trim(document.getElementById('loginPassword').value);
+                password = hex_md5(password).toUpperCase();
+                //var pwdMd5 = rstr_md5(password);
+            if(type=='center'){
+                password=password+'_1';
+                password = password+macAddr;
+            }else{
+                password = password+'_mac_'+macAddr;
+            }
+            var auth = "Basic " + convert.base64.encode(userName + ':' + password);
+
+            var isAutoLogin = Ext.query('.v-login-checkbox')[0].getAttribute('checked');
+                if(iePersion==8)
+                {
+                    isAutoLogin= Ext.query('.v-login-checkbox')[0].checked;
+                }
+            btn.disabled = true;
+            domAddCls(btn, 'v-login-button-disabled');
+
+                Ext.Ajax.request({
+                    url: '/CMS/main/login.do',
+                    method: 'GET',
+                    headers: {Authorization: auth},
+                    success: function (response) {
+                        var result = Ext.JSON.decode(response.responseText);
+                        var code = result.code + "";
+                        if (code == '0') {
+                            var expires = Ext.Date.add(new Date(), Ext.Date.DAY, 30);
+                            Ext.util.Cookies.set('userInfo.userName', result.msg.username, expires);
+							Ext.util.Cookies.set('userInfo.loginName', result.msg.username);
+							Ext.util.Cookies.set('userInfo.originalLoginPassword', document.getElementById('loginPassword').value);
+                            Ext.util.Cookies.set('userInfo.loginFlag', '1');
+                            if (isAutoLogin == 1) {
+                                Ext.util.Cookies.set('userInfo.password', Ext.String.trim(document.getElementById('loginPassword').value), expires);
+                            }
+                            else {
+                                Ext.util.Cookies.set('userInfo.password', "");
+                            }
+							Ext.util.Cookies.set('userInfo.password', hex_md5(document.getElementById('loginPassword').value).toUpperCase());//暂时存cookie
+                            window.localStorage.setItem("userInfo", Ext.JSON.encode(result.msg));
+                            setVideoExtendOsd(result.msg.username);
+                            var search = window.location.search;
+                            var page = 'webclient.html';
+                            if (search && search.indexOf('page=config') > -1) {
+                                page = 'index.html';
+                            }//alert(auth);
+							//增加
+                            var url = $("#select_id").val();//下拉框中
+							if(url){//登录成功，跳转回去
+								Record_SET.add(url);
+								loginSubsystem(url,userName,Ext.String.trim(document.getElementById('loginPassword').value))
+								//window.location.href=url+"/login.html?page=client&user="+userName+"&pwd="+Ext.String.trim(document.getElementById('loginPassword').value)	
+							}else{
+								window.location = page;
+							}
+                        }
+                        else {
+                            var errorMsg = window.msgCode[code];
+                            alert(auth);
+                            btn.disabled = false;
+                            domRemvoeCls(btn, 'v-login-button-disabled');
+                            document.getElementById('loginMain').style.display = 'block';
+                            document.getElementById('loginTop').style.display = 'block';
+                        }
+                    },
+                    failure: function (response) {
+                        alert(Lang.login.serviceError);
+                        btn.disabled = false;
+                        domRemvoeCls(btn, 'v-login-button-disabled');
+                        document.getElementById('loginMain').style.display = 'block';
+                        document.getElementById('loginTop').style.display = 'block';
+                    }
+                });
+            }
+
+        function loginThird(){
+            var temp_DSign_Result;
+            Ext.Ajax.request({
+                url: 'CMS/main/getOriginal.do',
+                success: function (resText) {
+                    try{
+                        var res = Ext.decode(resText.responseText);
+                        if (parseInt(res.code) < 0) {
+                            alert('获取原文失败');
+                            return;
+                        }
+                        try{
+                            //var DSign_Subject = 'CN=DemoCA, O=JIT, C=CN';
+                            var initParam="<?xml version=\"1.0\" encoding=\"utf-8\"?><authinfo><liblist><lib type=\"CSP\" version=\"1.0\" dllname=\"\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib><lib type=\"SKF\" version=\"1.1\" dllname=\"bXRva2VuX2dtMzAwMF9KSVQuZGxs\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib><lib type=\"SKF\" version=\"1.1\" dllname=\"SERfR01DQUlTLmRsbA==\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib><lib type=\"SKF\" version=\"1.1\" dllname=\"U2h1dHRsZUNzcDExXzMwMDBHTS5kbGw=\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib><lib type=\"SKF\" version=\"1.1\" dllname=\"SklUR01LRVlfU0pLMTQyNC5kbGw=\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib><lib type=\"SKF\" version=\"1.1\" dllname=\"U0tGQVBJLmRsbA==\" ><algid val=\"SHA1\" sm2_hashalg=\"sm3\"/></lib></liblist></authinfo>";
+                            var deftype="";
+                            var steps={
+                                "first":{"name": "Initialize","p1":initParam},
+                                "Initialize":{"name": "SetCertChooseType","p1":0},
+                                "SetCertChooseType":{"name": "SetCert","p1":"SC","p2":"","p3":"","p4":"","p5":"","p6":""},
+                                "SetCert":{"name": "P1SignStr","p1":"","p2":""},
+                                "P1SignStr":{"name": "Finalize"},
+                                "AttachSignStr":{"name": "Finalize"},
+                                "DetachSignStr":{"name": "Finalize"},
+                                "ErrorMsg":{"name": "GetErrorMessage","p1":0}
+                            };
+                            var DSign_Subject = '';
+                            var ocx;
+                            try{
+                                ocx = document.getElementById('JITDSignOcx');
+                                ocx.Initialize(initParam);
+                                ocx.SetCertChooseType(1);
+                                ocx.SetCert("SC","","","",DSign_Subject,"");
+                            }catch(e){}
+                            try{
+                                ocx = document.getElementById('policeJITDSignOcx');
+                                ocx.SetCertChooseType(1);
+                                ocx.SetCert("SC","","","",DSign_Subject,"");
+                            }catch(e){}
+                            if(ocx.GetErrorCode()!=0){
+                                alert("错误码："+ ocx.GetErrorCode()+"　错误信息："+ ocx.GetErrorMessage(ocx.GetErrorCode()));
+                            }else {
+                                temp_DSign_Result = ocx.DetachSignStr("", res.msg);
+                                if(ocx.GetErrorCode()!=0){
+                                    alert("错误码："+ocx.GetErrorCode()+"　错误信息："+ocx.GetErrorMessage(ocx.GetErrorCode()));
+                                }
+                                console.log('DSign_Result: ' + temp_DSign_Result);
+                                //如果Get请求，需要放开下面注释部分
+                                //	 while(temp_DSign_Result.indexOf('+')!=-1) {
+                                //		 temp_DSign_Result=temp_DSign_Result.replace("+","%2B");
+                                //	 }
+                                //document.getElementById("signed_data").value = temp_DSign_Result;
+                            }
+                        }catch (e){
+                            alert('请检查登陆控件是否安装或启用!');
+                            //return;
+                        }
+                        if(!temp_DSign_Result){
+                            //return ;
+                        }
+                        Ext.Ajax.request({
+                            url: 'CMS/main/certLogin.do',
+                            method: 'POST',
+                            headers: {Authorization: 'Cert ' + convert.base64.encode(res.msg)},
+                            params:temp_DSign_Result,
+                            success: function (response) {
+                                try{
+                                    var rslt = Ext.JSON.decode(response.responseText);
+                                    if (parseInt(rslt.code) >= 0) {
+                                        var expires = Ext.Date.add(new Date(), Ext.Date.DAY, 30);
+                                        Ext.util.Cookies.set('userInfo.userName', rslt.msg.username, expires);
+                                        Ext.util.Cookies.set('userInfo.loginName', rslt.msg.username);
+                                        Ext.util.Cookies.set('userInfo.loginFlag', '1');
+                                        window.localStorage.setItem("userInfo", Ext.JSON.encode(rslt.msg));
+                                        setVideoExtendOsd(rslt.msg.username);
+                                        var page = 'webclient.html';
+                                        var search = window.location.search;
+                                        if (search && search.indexOf('page=config') > -1) {
+                                            page = 'index.html';
+                                        }
+                                        window.location = page;
+                                    }
+                                    else {
+                                        var errorMsg = window.msgCode[parseInt(rslt.code)];
+                                        alert(errorMsg);
+                                    }
+                                }catch (e){
+                                    console.log(e);
+                                }
+                            },
+                            failure: function (res) {
+                                alert(Lang.login.serviceError);
+                            }
+                        });
+                    }catch (e){
+                        console.log(e);
+                    }
+                },
+                failure:function(res){
+                    alert(Lang.common.getOriginalFailed);
+                }
+            })
+        }
+
+        Ext.onReady(function () {
+            window.msgCode = {};
+            var getErrorCode = function (c) {
+                Ext.Ajax.request({
+                    url: 'CMS/action/system/returnCode/get.do?type=' + c,
+                    success: function (resText) {
+                        var res = Ext.decode(resText.responseText);
+                        if (res.code == "0") {
+                            var msg = res.msg;
+                            var codes = {};
+                            for (var i = 0, len = msg.length; i < len; i++) {
+                                var c = msg[i].code + "",
+                                        s = msg[i].description;
+                                codes[c] = s;
+                            }
+                            window.msgCode = codes;
+                        }
+                        else{
+                            alert(res.desc);
+                        }
+                    },
+                    failure:function(res){
+                        alert(res.responseText);
+                    }
+                })
+            };
+
+                getErrorCode((lan == "cn" ? "CN" : "US"));
+
+                document.getElementById("centerUserLabel").innerText = Lang.login.centerUser;
+                document.getElementById("localUserLabel").innerText = Lang.login.localUser;
+                document.getElementById("userNameLabel").innerText = Lang.login.userNameLabel;
+                document.getElementById("pwdLabel").innerText = Lang.login.pwdLabel;
+                document.getElementById("remPwdLabel").innerText = Lang.login.remPwdLabel;
+            document.getElementById("loginBtn").value = Lang.login.loginLabel;
+            //document.getElementById("loginBtnThird").value = Lang.login.loginThird;
+            document.getElementById('certificateLandA').text =  Lang.login.loginThird;
+                var checkBox = Ext.query('.v-login-checkbox')[0];
+                    var ExtcheckBox = Ext.get(checkBox);
+                    ExtcheckBox.addListener("click", checkboxClick);
+                var loginFlag = Ext.util.Cookies.get('userInfo.loginFlag');
+                if(loginFlag=='1'){
+                    document.getElementsByName("userType")[0].checked=true;
+                    document.getElementsByName("userType")[1].checked=false;
+                }else if(loginFlag=='2'){
+                    document.getElementsByName("userType")[0].checked=false;
+                    document.getElementsByName("userType")[1].checked=true;
+                }
+                var userName = Ext.util.Cookies.get('userInfo.userName');
+                if (userName) {
+                    document.getElementById('loginUserName').value = userName;
+                }
+                // document.getElementById('loginUserName').focus();
+                var password = Ext.Base64Util.encode(Ext.util.Cookies.get('userInfo.password'));
+                if (password) {
+                    document.getElementById('loginPassword').value = Ext.Base64Util.decode(password);
+                    checkBox.setAttribute('checked', '1');
+                    domAddCls(checkBox, 'v-login-checkbox-checked');
+                }
+                Ext.getBody().on('keydown', function (e, t, eOpts) {
+                    var key = e.getKey();
+                    if (key == e.ENTER) {
+                        submitForm();
+                    }
+                }
+                );
+                var loginBtn = document.getElementById('loginBtn');
+                    var ExtloginBtn = Ext.get(loginBtn);
+                    ExtloginBtn.addListener('click', function (event)
+                            {
+                                var me = this;
+                                domRemvoeCls(me, 'v-login-button-over');
+                                submitForm();
+                            }
+                    );
+                    ExtloginBtn.addListener('mouseover', function (event)
+                            {
+                                var me = this;
+                                if (!me.disabled)
+                                {
+                                    domAddCls(me, 'v-login-button-over');
+                                }
+                            }
+                    );
+                    ExtloginBtn.addListener('mouseout', function (event)
+                            {
+                                var me = this;
+                                domRemvoeCls(me, 'v-login-button-over');
+                            }
+                    );
+            //login third
+            //var loginBtnThird = document.getElementById('loginBtnThird');
+            var loginBtnThird = document.getElementById('certificateLandA');
+            var ExtloginBtnThird = Ext.get(loginBtnThird);
+            ExtloginBtnThird.addListener('click', function (event){
+                        loginThird();
+                    }
+            );
+                        var p = window.location.search.substr(1).split(/[&]/),map = new Ext.util.MixedCollection();
+                        for(var i=0;i< p.length;i++)
+                        {
+                            var q= p[i].split('_');
+                            if(q.length>1)
+                            {
+                                map.add(q[0],q[1]);
+                            }
+                        }
+                        var encodeName =map.get('userName'),encodePassword =map.get('password') ;
+                        var un1,pw1;
+                        if(encodeName&&encodePassword)
+                        {
+                            un1 = Ext.Base64Util.decode(encodeName);
+                            pw1 = Ext.Base64Util.decode(encodePassword);
+                        }
+
+                        var un =  encodeName?un1:"";
+                        var pw = encodePassword?pw1:"";
+                        if(un && pw)
+                        {
+                            document.getElementById("loginUserName").value = un;
+                            document.getElementById("loginPassword").value = pw;
+                           // document.getElementById('loginBtn').click();
+                        }
+
+                var browserInfo = globalFunction.checkBrowser();
+            if (browserInfo.browserType == "IE") {
+                Ext.Ajax.request({
+                            url: "/version.json",
+                            success: function (req, res) {
+                                var v = Ext.JSON.decode(req.responseText).pluginVersion;
+                                window.versionJsonContent = Ext.JSON.decode(req.responseText);
+                                checkPlugin(v.plugFileVersion, v.pluginCoreVersion);
+                                //下载
+                                var dlPlugin = document.getElementById('downloadPluginA');
+                                dlPlugin.innerText = Lang.login.downloadPlugin;
+                                dlPlugin.href = 'download/ClientPlugin_VMS_' + v.plugFileVersion
+                                        + '.' + v.pluginCoreVersion + '.exe';
+                                var dlTools = document.getElementById('downloadToolsA');
+                                dlTools.innerText = Lang.login.downloadTools;
+                                dlTools.href = 'download/Clearcookies.bat';
+                                //IE设置
+                                var IEsecuritySet = document.getElementById('IEsecuritySet');
+                                IEsecuritySet.innerText = Lang.login.IEsecuritySet;
+                                IEsecuritySet.href = 'download/V2200reg.bat';
+                            }
+                        }
+                );
+                }
+
+            document.title = Lang.common.appTitle || appTitle;
+            //焦点
+            if (!userName) {
+                document.getElementById('loginUserName').focus();
+            }
+            else if (!password) {
+                document.getElementById('loginPassword').focus();
+            }
+            else {
+                document.getElementById('loginUserName').focus();
+            }
+
+        });
+        };
+    function setVideoExtendOsd(username){
+        try{
+            var videoExtendOsd = {
+                osdType:'waterMark',
+                osdInfo:[
+                    {
+                        userName: username,
+                        clientIp:this.macAddr.ip,
+                        clientMac:this.macAddr.mac,
+                        posX:150,
+                        posY:150
+                    }
+                ]
+            };
+            var obj = document.getElementById('pluginObject');
+            obj.SetVideoExtendOsd(Ext.encode(videoExtendOsd), 150, 150);
+        }catch(e){
+
+        }
+    }
+	
+</script>
+<script type="text/javascript" src="convert.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+		/**
+		 * 无法完全兼容ie8，因为其他页面使用了ie8不支持的 window.localStorage，会导致少许异常情况
+		 */
+		//初始化完成之后
+		$(function(){
+			var url = ""
+			if(window.location.search.indexOf("url") > -1 ){
+				url = window.location.search.substring(5); // ?url=
+			}
+			var pwd = getCookie("userInfo.originalLoginPassword");
+			var user = getCookie("userInfo.loginName") ;
+			var userInfo = window.localStorage.getItem("userInfo"); //userInfo 为空表示也未登录
+			console.log(url+'-'+userInfo+'-'+pwd+'-'+user);
+			if(url){
+				$("#select_id").find("option:contains('自动')").attr("selected",true);
+				$("#select_id").find("option:contains('自动')").prop("value",url);
+			}
+			//也许本次请求是退出
+			var login = getQueryVariable('login');
+			if(login=='logout'){//alert( Array.from(Record_SET.get()) );
+				//基础平台请求退出
+				$.get('/CMS/j_spring_security_logout.do',function(){
+					setCookie("userInfo.loginName","");//理论上是不需要的，以防止基础平台未完全退出！！
+					//通知其他平台退出 Record_SET.get()缓存了业务系统通过基础平台登录的数据
+					Record_SET.get().forEach(function (e) {
+						if(e){
+							//$("#proxy")= <iframe src="" id="proxy" style="display:none;" onload=""></iframe>
+							$("#proxy").prop("src",e+"/login.html?iframe=logout");
+						}
+					});
+					Record_SET.clear();
+				});
+			}else{
+				// 访问cookie查看当前登录的user。如果没登录，则要求登录，如果已经登录了  --  从cookie中取出凭证 再跳转到url页面，url页面根据凭证自动登录
+				if(user && url && pwd && userInfo){
+					console.log("已登录，进行跳转..."+url);
+					Record_SET.add(url);
+					// 如果包含? 
+					loginSubsystem(url.substring(0,8+url.substring(8).indexOf("/")),user,pwd);//只获取参数url中的 ip+port
+				}else{
+					console.log("未登录url: "+url+",user："+user+",pwd："+pwd);
+				}
+		
+			}
+			//test
+			
+		})
+		
+		function getQueryVariable(variable){
+			   var query = window.location.search.substring(1);
+			   var vars = query.split("&");
+			   for (var i=0;i<vars.length;i++) {
+					   var pair = vars[i].split("=");
+					   if(pair[0] == variable){return pair[1];}
+			   }
+			   return(false);
+		}
+		
+		
+		//跨域登录
+		function loginSubsystem(login_url,name,pwd) {
+			var auth = convert.base64.encode(name + ':' + hex_md5(pwd).toUpperCase());
+			//window.location=login_url+"/login.html?auth="+auth;  //登录地址
+			//http://127.0.0.1:8080/CMS/main/sso.do?url=http://10.22.2.29:8081/ISAS/main/initLogin.do?page=webclient.html
+		}
+		
+		
+		//读取cookies 
+		function getCookie(name) { 
+			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+			if(arr=document.cookie.match(reg))
+				return unescape(arr[2]); 
+			else 
+				return null; 
+		}
+		function setCookie(name,value) { 
+			var Days = 30; 
+			var exp = new Date(); 
+			exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+			document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+		} 
+		//兼容ie8
+		if(!Array.from){Array.from = function (el) {var v = "";el.forEach(function (e) {if(v){v = v + ","+ e}else{v = e}});return v;}}
+		//构造Record_SET 记录登录后的其他平台地址，用于注销
+		var Record_SET={};	
+		Record_SET.add = function (obj) {
+			//alert("Record_SET add" +  Record_SET.url(obj) );
+			var record = getCookie("loginRecord") || "";
+			var set = new Set(record.split(","))
+			set.add(Record_SET.url(obj));
+			setCookie("loginRecord", Array.from(set));//持久化保存
+			
+			var arr = getCookie("loginRecord").split(",");
+		};
+		Record_SET.get = function () {
+			return Record_SET.set(getCookie("loginRecord"));
+		};
+		Record_SET.clear = function(){
+			setCookie("loginRecord", "");
+		};
+		Record_SET.url = function(url){//只记录ip到端口号
+			if( url.substring(8).indexOf("/") > 0 ){
+				return url.substring(0,8+url.substring(8).indexOf("/"));
+			}else{
+				return url;
+			}
+		};
+		Record_SET.set = function(arr){//坑ie不支持new Set(arr)
+			var set = new Set();
+			arr = getCookie("loginRecord").split(",");
+			arr.forEach(function (e) {
+				set.add(e);
+			})
+			return set;
+		};	
+		
+</script>
+<iframe src="" id="proxy" style="display:none;" onload=""></iframe><!-- 辅助，用于退出  -->
+</html>

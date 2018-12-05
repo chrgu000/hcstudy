@@ -1,0 +1,39 @@
+1、准备好jdk相关版本，如： jdk-7u75-linux-x64.tar.gz
+2、新建好存放jdk的目录，如：/usr/local/java/jdk1.7
+3、解压jdk-7u75-linux-x64.tar.gz包。tar xvf  jdk-7u75-linux-x64.tar.gz
+      mv /usr/local/hadoop-1.2.1 /usr/loca/hadoop 重命名
+4、配置环境变量：
+	1 cd /etc
+        2 vi profile
+JAVA_HOME=/usr/local/jdk7
+JRE_HOME=/usr/local/jdk7/jre
+PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+export JAVA_HOME JRE_HOME PATH CLASSPATH
+        3 使环境变量立即生效，输入命令：source /etc/profile
+
+
+
+/usr/local/jdk1.8
+
+
+tomcat 安装
+1、解压tomcat软件包apache-tomcat-7.0.2.tar.gz
+2、修改tomcat配置文件。进入tomcat的bin目录
+#cd /usr/local/tomcat/bin/
+#vim catalina.sh
+在85行下添加
+JAVA_OPTS="-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true "
+配置内存大小，修改完成后保存配置
+3、#cd /usr/local/tomcat/bin/
+后台重启：
+1、cd /usr/local/tomcat8/bin/
+  ./catalina.sh stop
+  ./catalina.sh start
+
+tail -f /usr/local/tomcat8/logs/catalina.out
+
+systemctl restart iptables.service
+systemctl stop iptables.service
+
+
