@@ -26,3 +26,6 @@ Java Compiler Use compiler 修改为Eclipse
  设置自动：editor->General->Auto Import-> 两个 ...on the fiy勾起
 其他快捷键：
 alt+insert get/set
+
+
+--------------------------cs
