@@ -8,6 +8,8 @@ lower(), uppper()
 日期转字符串：date_format(now(),'%Y-%c-%d %H:%i:%s')
 
 字符串转日期：STR_TO_DATE('2010-10-22 13:12:12','%Y-%m-%d %H:%i:%s' ) 
+select CAST(ext_info AS CHAR(10000) CHARACTER SET utf8)  from device
+
 
 alter table test_table add unique key `kk_uq` ( kk);
 SELECT CAST('123' AS SIGNED);
