@@ -14,3 +14,16 @@ JAVA_OPTS="-server -Xms256m -Xmx512m -XX:PermSize=64M -XX:MaxPermSize=128m"
 
 myeclipse 
 tomcat 不进debug，要以debug模式进入
+code templates ----------------
+Types
+/**
+ * @author huangch
+ * Since:JDK 7
+ * Date:${date}${time}
+ * @Copyright2018,huangch@szinfinova.com All Rights Reserved
+ */
+methods
+/**
+ * @author huangch  Date:${date}${time}
+ * ${tags}
+ */
