@@ -14,6 +14,6 @@ JAVA_OPTS="-Xms1024m -Xmx4096m -Xss1024K -XX:PermSize=512m -XX:MaxPermSize=2048m
 tomcat7\conf\context.xml
 <!-- The contents of this file will be loaded for each web application --> 下一句：
 <Context path="/ROOT" allowLinking="true">
-
+设置ROOT路径
 server.xml，<Host name="localhost"  appBase="webapps"下添加
 <Context path="" debug="0" docBase="V2233DH-SF_client" reloadable="true"/> 

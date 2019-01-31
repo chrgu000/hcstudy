@@ -20,7 +20,9 @@ http://localhost:15672
 新增一个用户 rabbitmqctl.bat add_user username password
 授权为超级用户：rabbitmqctl.bat set_user_tags username administrator
 
-
+本机：huangch  infinova
 
 消息生产者：即消息发送者
 消息消费者：即消息接收者
+
+https://www.cnblogs.com/julyluo/p/6265775.html
