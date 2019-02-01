@@ -123,3 +123,8 @@ git stash pop stash@{num}  num就是你要恢复的工作现场的编号
 
 -------------------------- 避免Merge branch 'master' of
 https://www.cnblogs.com/Sinte-Beuve/p/9195018.html
+--------------------------------------git reset      还原本地commit
+commit -id   注意id是你要还原到的id，而不是你当前要舍弃的commitid
+# --soft # 还原 HEAD
+# --mixed # 还原 HEAD、Index # 默认参数         
+# --hard # 还原 HEAD、Index、Working Directory
