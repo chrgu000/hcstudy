@@ -1,0 +1,99 @@
+/**
+	 * 单点登录
+	 * 应用系统获取认证系统token，然后跳回应用系统
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/login")
+    public void login(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		String goBack = request.getParameter("url");
+	
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+		Object principal = null;
+		if (auth != null) {
+			principal = auth.getPrincipal();
+		}
+		if (principal != null) {
+			if (principal instanceof UserDetails) {
+				//基础平台已登录！！
+				UserDetailsInfo userInfo = (UserDetailsInfo)principal;
+							
+				String token = "....";//JwtUtil.createUserJWT(GuidUtil.randomGuid(), userInfo, 10*60*1000);
+				logger.debug("sso login  : "+goBack+"&username="+userInfo.getUsername()+"&token="+token);
+				//response.sendRedirect(goBack+"&username="+userInfo.getUsername()+"&token="+token);
+			}else{
+				logger.debug("sso no login" );
+				//response.sendRedirect("/login.html?url="+goBack);
+				
+			}
+		}
+    }
+	/**
+	 * 单点登出 
+	 * httpclient分别请求客户端注销
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	public void logout(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		
+	}
+	/**
+	 * 客户端验证token
+	 * 用于单点登录验证
+	 * httpclient 
+	 */
+	@RequestMapping("/verifyToken")
+	public Map<String, Object> verifyToken(HttpServletRequest request){
+		Map msg =  returnSuccess();
+		String token = getToken(request);
+		if (StringUtils.isNotBlank(token)) {
+			UserDetailsInfo UserDetailsInfo = tokenService.getUserDetailsInfo(token);
+			if (UserDetailsInfo != null) {
+				//token有效
+				msg.put("userinfo", UserDetailsInfo);
+				msg.put("success", 1);
+			}else{
+				msg.put("msg", "error");
+			}
+		}
+		return msg;
+	}
+	/**
+	 * 客户端登录成功后，httpclient请求该方法保存登录信息，用于登出时用
+	 * 客户端注销地址-客户端token（可以是token也可是sessionid）
+	 */
+	public void saveLoginRecord(){
+		
+	}
+	
+	
+	public Map<String, Object> returnSuccess(){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("success", 0);
+		return map;
+	}
+	/**
+	 * 根据参数或者header获取token
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getToken(HttpServletRequest request) {
+		String token = request.getParameter(TOKEN_KEY);
+		if (StringUtils.isBlank(token)) {
+			token = request.getHeader(TOKEN_KEY);
+		}
+
+		return token;
+	}
+	
+	/**
+	 *  User user = userService.getUser(username);
+	 *  UserDetailsInfo UserDetailsInfo = new UserDetailsInfo();
+		BeanUtils.copyProperties(user, UserDetailsInfo);
+		List<Permission> permissions = permissionDao.listByUserId(user.getId());
+		UserDetailsInfo.setPermissions(permissions);
+		Token token = tokenService.saveToken(UserDetailsInfo);
+	 */

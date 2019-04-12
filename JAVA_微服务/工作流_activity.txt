@@ -1,0 +1,29 @@
+API：
+http://www.mossle.com/docs/activiti/index.html#demo.setup.one.minute.version
+示例：
+https://www.cnblogs.com/gcjava/archive/2017/04/19/6734793.html
+MyEclipse2014/2015 安装Activiti插件：-------------------------------
+https://www.cnblogs.com/LiuChunfu/p/5229453.html
+简化安装步骤：----------------------------------------------------------
+1、下载activiti-designer-5.18.0.zip
+2、解压到D:\MyEclipse 2015\dropins\activiti-designer-5.18.0
+      （MyEclipse 2015安装目录dropins文件夹下新建activiti-designer-5.18.0）	
+3、在新建文件D:\MyEclipse 2015\dropins\activiti-designer-5.18.0\activiti.link
+       输入：path=D:\MyEclipse 2015\dropins\activiti-designer-5.18.0\site\
+流程设计器：--------------------------------------
+Main config
+Assignee 任务办理人
+Candidate user 任务办理人为多用户
+Candidate group  任务办理人为用户组
+数据库中表关系：
+act_id_group 用户组
+act_id_user 用户
+act_id_membership 用户-组
+
+视频教程-----------------------------------------
+教程：https://www.bilibili.com/video/av34688148/?p=7
+
+简明教程---------------------------------------核心接口、表
+https://www.jianshu.com/p/701056e672a4
+condition:
+${result==0}

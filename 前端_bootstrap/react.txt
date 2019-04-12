@@ -1,0 +1,6 @@
+https://segmentfault.com/a/1190000011085024?utm_source=tag-newest
+react 项目
+打包项目：
+npm run build 
+运行项目
+npm start

@@ -25,3 +25,7 @@ boot:
 　　　　　　　　按回车成功启动即可浏览器访问该项目。
 
 预采用模板：http://www.ruoyi.club/index
+
+发布时报错
+https://www.cnblogs.com/linnuo/p/5777362.html
+-Dmaven.multiModuleProjectDirectory=$M2_HOME

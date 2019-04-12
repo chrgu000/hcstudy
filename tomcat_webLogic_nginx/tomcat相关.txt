@@ -17,3 +17,17 @@ tomcat7\conf\context.xml
 设置ROOT路径
 server.xml，<Host name="localhost"  appBase="webapps"下添加
 <Context path="" debug="0" docBase="V2233DH-SF_client" reloadable="true"/> 
+
+以服务形式启动tomcat：------------------------------------------------
+多个tomcat服务模式：
+http://www.zhimengzhe.com/windows/165349.html
+service.bat install
+service.bat uninstall
+
+-------------------------------------------------
+<role rolename="manager-gui"/>  
+	<role rolename="manager-script"/>  
+	<role rolename="manager-jmx"/>  
+	<role rolename="manager-status"/>  
+	<user username="admin" password="111111" roles="manager-gui"/> 
+	<user username="tomcat" password="111111" roles="manager-script,manager-jmx,manager-status"/>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" /> 
+    <title>SSOLogin</title>  
+	<script src="js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		var token = getQueryVariable("token");//decodeURI(getQueryVariable("userInfo"));
+		var page = getQueryVariable("page");	    //需要跳转的地址
+		var iframe = getQueryVariable("iframe");    //退出请求：iframe=logout
+		console.log(token);
+		if( iframe=='logout'){
+			/**
+			 *  0、登出请求
+			 *  登出设计：回到基础平台的统一认证页面时，
+			 *            以iframe的形式加载该页面的该方法，实现跨域登出业务系统
+			 */
+			$.get("logout");
+			localStorage.removeItem("token");
+		}else{
+			/**
+			 *  1、设置前端权限缓存、cookie等值
+			 */
+			if( token ){
+				localStorage.setItem("token", token);
+				/**
+				 *  2、然后再进行页面跳转 如：window.location = index.html;
+				 */
+				location = page;
+			}else{//alert("ISAS/main/SSOLogin.do?page="+page)
+				//未登录
+				location = "sso/SSOLogin?page="+'/portal/index.html' //document.referrer    //'/portal/index.html'
+			}
+			
+		}
+		
+		
+		
+		//获取url参数 &a=1&b=1&c=1=
+		function getQueryVariable(variable)
+		{
+			   var query = window.location.search.substring(1);
+               if(query.indexOf('client') > -1){query = 'page=config'}
+			   var vars = query.split("&");
+			   for (var i=0;i<vars.length;i++) {
+					   var pair = vars[i].split("=");
+					   if(pair[0] == variable){return vars[i].replace(variable+"=","");}
+			   }
+			   return(false);
+		}
+		function setCookie(name,value) { 
+			var Days = 30; 
+			var exp = new Date(); 
+			exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+			document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+		} 
+	</script>
+</head>  
+<body>  
+	正在跳转...
+</body>
+</html>

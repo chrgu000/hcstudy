@@ -1,0 +1,46 @@
+
+个人工作经验介绍
+政府行业主流数据：oracle ，例如东软社保系统
+医院his系统：一般sqlserver
+互联网行业：一般mysql
+
+行转列
+
+列转行
+
+子查询
+
+左右连接
+
+递归查询
+
+视图
+
+函数
+
+存储过程
+
+闪回
+
+
+federated
+dblink
+lower
+uppper
+date_format
+CREATE  
+
+select…start with…connect by…prior
+StudentScores
+THEN
+YEAR
+DELIMITER
+DECLARE
+varchar
+PROCEDURE
+大家好，我叫黄诚，我给大家讲下数据库方面的知识。
+我先简单介绍下数据库，比如，像我们常用的mysql、sqlserver、oracle等，都叫关系型数据库
+像redis，mongodb、hbase等叫做非关系型数据库，近几年大数据、nosql非常火
+为什么我们还要学习关系型数据库
+因为这类 NoSQL 数据库仅仅只是解决某一类问题，并不是通用型数据库。我们还是需要mysql这类关系型数据库去存业务数据。
+我们作为开发人员，不可避免要跟数据库打交道，特别是遇到那种很复杂业务系统里面查询统计模块，多一些数据库知识，我们应对起来就容易些。

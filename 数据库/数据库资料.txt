@@ -1,0 +1,13 @@
+¿ç¿â²éÑ¯
+CREATE TABLE `org_node_21_test`  (
+  `org_id` varchar(38)  ,
+  `org_name` varchar(64)  ,
+  `org_code` varchar(64)  ,
+  `org_rank` smallint(6) ,
+  `parent_id` varchar(38) ,
+  `description` varchar(256) ,
+  `extend_info` varchar(256) ,
+  `source_share_id` varchar(64) ,
+  `domain_server_id` varchar(38) ,
+  `resource_id` varchar(38) 
+) ENGINE=FEDERATED CHARACTER SET = utf8 CONNECTION='mysql://root:vms123@10.82.27.21:3316/ims/org_node'; 

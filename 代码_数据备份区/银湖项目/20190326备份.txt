@@ -1,0 +1,67 @@
+
+
+/**
+     * [集成平台-认证中心]请求认证中心单点登出
+     * @author huangch  Date:2019年3月20日上午9:06:43
+     * @param req
+     */
+    /*public void logoutSSO(HttpServletRequest req){
+    	if(sso){
+    		String token = (String) req.getSession().getAttribute("ssoToken");//统一认证平台的token
+    		if(StringUtils.isNotEmpty(token)){
+    			HttpUtil.doGet(serverLogout+"?token="+token);
+    		}
+    	}
+    }*/
+    /**
+     * [集成平台-认证中心]静默登录 激活认证中心后台会话
+     * @author huangch  Date:2019年3月20日上午10:44:04
+     */
+    /*public void loginSSO(HttpServletRequest req,String username,String pwd){
+    	String ref = req.getHeader("Referer");
+    	if(StringUtils.isNotEmpty(ref)){
+    		int i = ref.indexOf("sid=");
+        	String sid = "";
+        	if(i > -1){
+        		sid = (ref.substring(i+4));
+            	String str = HttpUtil.doGet(verifyToken.replace("verifyToken", "sidLogin")+"?sid="+sid+"&username="+username+"&code=v2200");
+            	JSONObject object = JSONObject.parseObject(str);
+            	if( object !=null ){
+            		if("0".equals(object.get("code"))){
+            			req.getSession().setAttribute("ssoToken", object.get("msg"));//保存静默登录的认证中心token，退出时还要用
+            		}
+            	}
+        	}
+    	}
+    }*/
+    /**
+     * [集成平台-认证中心]支持认证中心免登陆 ajax请求
+     * 验证token是否登录
+     * @author huangch  Date:2019年3月20日上午10:40:31
+     */
+    /*public boolean verifyTokenSSO(String token){
+    	if(sso){
+    		String str =HttpUtil.doGet(verifyToken+"?token="+token);
+        	JSONObject object = JSONObject.parseObject(str);
+        	if( object !=null ){
+        		if("0".equals(object.get("code"))){
+        			String username = (String) ((JSONObject)object.get("msg")).get("username");
+    				try {
+    					User user = userService.getByUserName(username);
+    					String jwtPwd = JwtUtil.createJWT(GuidUtil.randomGuid(), user.getPassword(), 60*1000);
+    	        		UsernamePasswordAuthenticationToken uptoken = new UsernamePasswordAuthenticationToken(user.getUserName(),jwtPwd.replaceAll("_", ",,")+"_jwt");
+    	        		Authentication authentication = authenticationManager.authenticate(uptoken);
+    	        		SecurityContextHolder.getContext().setAuthentication(authentication);
+    	        		sessionRegistry.registerNewSession(token, authentication.getPrincipal());//保存凭证，下次免验证
+    				} catch (Exception e) {
+    					logger.debug("verifyTokenSSO authentication error："+verifyToken+","+token+"--"+e.getMessage());
+    					return false;
+    				}
+    				logger.debug("verifyTokenSSO is ok :"+token);
+        			return true;
+        		}
+        	}
+        	logger.debug("verifyTokenSSO token error :"+sso+""+token);
+    	}
+    	return false;
+    }*/
