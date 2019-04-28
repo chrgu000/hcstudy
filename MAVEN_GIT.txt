@@ -128,3 +128,16 @@ commit -id   注意id是你要还原到的id，而不是你当前要舍弃的commitid
 # --soft # 还原 HEAD
 # --mixed # 还原 HEAD、Index # 默认参数         
 # --hard # 还原 HEAD、Index、Working Directory
+-------------------------------------------------------------------------------修改 commit信息
+1，修改最近一次的commit 信息
+
+　　git commit --amend
+
+　　然后就会进入vim编辑模式
+
+2，比如要修改的commit是倒数第三条，使用下述命令：
+
+　　git rebase -i HEAD~3
+3， 退出保存 :wq
+4，执行 git rebase --continue
+5，执行 git push -f 推送到服务端。

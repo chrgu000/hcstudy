@@ -26,3 +26,6 @@ http://localhost:15672
 消息消费者：即消息接收者
 
 https://www.cnblogs.com/julyluo/p/6265775.html
+
+学习视频：
+https://www.bilibili.com/video/av18997807?from=search&seid=9910203925555863370

@@ -97,6 +97,7 @@ sed -n "开始行，结束行p" 文件名
 tail -f /usr/local/tomcat/apache/logs/catalina.out
 --51正式
 tail -f /usr/local/tomcat/apache-tomcat-7.0.52/logs/catalina.out
+tail -f /usr/local/ims/ims/apache-tomcat-9.0.14/logs/catalina.out
 
 /usr/local/tomcat/apache-tomcat-7.0.52/bin/catalina.sh stop
 /usr/local/tomcat/apache-tomcat-7.0.52/bin/catalina.sh start

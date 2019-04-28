@@ -27,3 +27,5 @@ methods
  * @author huangch  Date:${date}${time}
  * ${tags}
  */
+----------------------------------------Unsupported major.minor version 52.0
+https://zhidao.baidu.com/question/2119494598458298427.html
